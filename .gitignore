@@ -1,21 +1,23 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+.idea
+.code
+**/vendor/
+.pulumi
+**/bin/
+**/obj/
+Pulumi.*.yaml
+**/node_modules/
+.DS_Store
 
-# Test binary, built with `go test -c`
-*.test
+**/command-output/
 
-# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+.idea/
+*.iml
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+yarn.lock
+**/pulumiManifest.go
 
-# Go workspace file
-go.work
+ci-scripts
+provider/**/schema-embed.json
+**/version.txt
+**/nuget
+**/dist
