@@ -1,0 +1,5 @@
+---
+upstream-provider-name: terraform-provider-influxdb
+pulumi-infer-version: true
+remove-plugins: true
+pr-reviewers: iwahbe # Team: pulumi/Providers

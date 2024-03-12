@@ -1,0 +1,5 @@
+{
+  "resource": true,
+  "name": "influxdb",
+  "server": "github://api.github.com/komminarlabs"
+}
