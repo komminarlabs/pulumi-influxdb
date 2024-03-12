@@ -1,0 +1,68 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "influxdb_authorization": {
+                "current": "influxdb:index/authorization:Authorization",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "influxdb_bucket": {
+                "current": "influxdb:index/bucket:Bucket"
+            },
+            "influxdb_organization": {
+                "current": "influxdb:index/organization:Organization"
+            }
+        },
+        "datasources": {
+            "influxdb_authorization": {
+                "current": "influxdb:index/getAuthorization:getAuthorization",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "influxdb_authorizations": {
+                "current": "influxdb:index/getAuthorizations:getAuthorizations",
+                "fields": {
+                    "authorizations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "permissions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "influxdb_bucket": {
+                "current": "influxdb:index/getBucket:getBucket"
+            },
+            "influxdb_buckets": {
+                "current": "influxdb:index/getBuckets:getBuckets",
+                "fields": {
+                    "buckets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "influxdb_organization": {
+                "current": "influxdb:index/getOrganization:getOrganization"
+            },
+            "influxdb_organizations": {
+                "current": "influxdb:index/getOrganizations:getOrganizations",
+                "fields": {
+                    "organizations": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {}
+}
