@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths-ignore:
-      - docs
-      - .devcontainer
+      - docs/**
+      - .devcontainer/**
 
 permissions:
   contents: write

@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths-ignore:
-      - docs
-      - .devcontainer
-      - examples
+      - docs/**
+      - .devcontainer/**
+      - examples/**
 
 env:
   PROVIDER: influxdb

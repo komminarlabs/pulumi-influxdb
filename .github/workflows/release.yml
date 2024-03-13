@@ -4,10 +4,6 @@ on:
   push:
     tags:
       - v*.*.*
-    paths-ignore:
-      - docs
-      - .devcontainer
-      - examples
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
