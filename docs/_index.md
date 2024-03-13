@@ -1,7 +1,7 @@
 ---
 title: InfluxDB
 meta_desc: Provides an overview of the InfluxDB Provider for Pulumi.
-layout: overview
+layout: package
 ---
 
 The InfluxDB provider for Pulumi can be used to provision the resources available in [InfluxDB](https://www.influxdata.com/).
