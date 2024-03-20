@@ -1,4 +1,4 @@
-name: release
+name: Release
 
 on:
   push:
@@ -51,10 +51,10 @@ jobs:
         run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
 
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v2
+        uses: goreleaser/goreleaser-action@v5
         with:
-          args: -p 3 release --rm-dist
           version: latest
+          args: release --clean
 
   publish_sdk:
     name: Publish SDK
