@@ -112,14 +112,11 @@
             },
             "type": "object",
             "required": [
-                "id",
-                "orgId",
                 "type"
             ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "id",
                         "name",
                         "org",
                         "orgId",
@@ -157,7 +154,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the resource. Note: not all resource types have a name property.\n"
+                    "description": "The name of the resource. **Note:** not all resource types have a name property.\n"
                 },
                 "org": {
                     "type": "string",
@@ -286,7 +283,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the resource. Note: not all resource types have a name property.\n"
+                    "description": "The name of the resource. **Note:** not all resource types have a name property.\n"
                 },
                 "org": {
                     "type": "string",

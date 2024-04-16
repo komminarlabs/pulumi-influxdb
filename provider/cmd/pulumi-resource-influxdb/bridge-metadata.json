@@ -3,6 +3,7 @@
         "resources": {
             "influxdb_authorization": {
                 "current": "influxdb:index/authorization:Authorization",
+                "majorVersion": 1,
                 "fields": {
                     "permissions": {
                         "maxItemsOne": false
@@ -10,15 +11,18 @@
                 }
             },
             "influxdb_bucket": {
-                "current": "influxdb:index/bucket:Bucket"
+                "current": "influxdb:index/bucket:Bucket",
+                "majorVersion": 1
             },
             "influxdb_organization": {
-                "current": "influxdb:index/organization:Organization"
+                "current": "influxdb:index/organization:Organization",
+                "majorVersion": 1
             }
         },
         "datasources": {
             "influxdb_authorization": {
                 "current": "influxdb:index/getAuthorization:getAuthorization",
+                "majorVersion": 1,
                 "fields": {
                     "permissions": {
                         "maxItemsOne": false
@@ -27,6 +31,7 @@
             },
             "influxdb_authorizations": {
                 "current": "influxdb:index/getAuthorizations:getAuthorizations",
+                "majorVersion": 1,
                 "fields": {
                     "authorizations": {
                         "maxItemsOne": false,
@@ -41,10 +46,12 @@
                 }
             },
             "influxdb_bucket": {
-                "current": "influxdb:index/getBucket:getBucket"
+                "current": "influxdb:index/getBucket:getBucket",
+                "majorVersion": 1
             },
             "influxdb_buckets": {
                 "current": "influxdb:index/getBuckets:getBuckets",
+                "majorVersion": 1,
                 "fields": {
                     "buckets": {
                         "maxItemsOne": false
@@ -52,10 +59,12 @@
                 }
             },
             "influxdb_organization": {
-                "current": "influxdb:index/getOrganization:getOrganization"
+                "current": "influxdb:index/getOrganization:getOrganization",
+                "majorVersion": 1
             },
             "influxdb_organizations": {
                 "current": "influxdb:index/getOrganizations:getOrganizations",
+                "majorVersion": 1,
                 "fields": {
                     "organizations": {
                         "maxItemsOne": false
