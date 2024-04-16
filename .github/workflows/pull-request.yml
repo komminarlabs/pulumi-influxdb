@@ -8,6 +8,7 @@ on:
       - docs/**
       - .devcontainer/**
       - examples/**
+      - .github/**
 
 env:
   PROVIDER: influxdb
