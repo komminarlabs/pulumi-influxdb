@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-## [1.1.0] - 2024-04-16
+## [1.2.0] - 2024-04-17
 
 #### Updates
 * Updated `influxdb_authorization` resource and made the `id` & `org_id` as optional in `permissions.resource` inline with Influx api.
