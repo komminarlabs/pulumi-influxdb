@@ -17,7 +17,7 @@ export interface AuthorizationPermissionResource {
     /**
      * A resource ID. Identifies a specific resource.
      */
-    id: string;
+    id?: string;
     /**
      * The name of the resource. **Note:** not all resource types have a name property.
      */
@@ -50,7 +50,7 @@ export interface GetAuthorizationPermissionResource {
      */
     id: string;
     /**
-     * The name of the resource. Note: not all resource types have a name property.
+     * The name of the resource. **Note:** not all resource types have a name property.
      */
     name: string;
     /**
@@ -128,7 +128,7 @@ export interface GetAuthorizationsAuthorizationPermissionResource {
      */
     id: string;
     /**
-     * The name of the resource. Note: not all resource types have a name property.
+     * The name of the resource. **Note:** not all resource types have a name property.
      */
     name: string;
     /**

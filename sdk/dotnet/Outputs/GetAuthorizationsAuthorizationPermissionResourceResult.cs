@@ -19,7 +19,7 @@ namespace KomminarLabs.InfluxDB.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the resource. Note: not all resource types have a name property.
+        /// The name of the resource. **Note:** not all resource types have a name property.
         /// </summary>
         public readonly string Name;
         /// <summary>

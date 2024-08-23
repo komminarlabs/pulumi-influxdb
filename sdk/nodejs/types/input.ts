@@ -17,7 +17,7 @@ export interface AuthorizationPermissionResource {
     /**
      * A resource ID. Identifies a specific resource.
      */
-    id: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
     /**
      * The name of the resource. **Note:** not all resource types have a name property.
      */
@@ -29,7 +29,7 @@ export interface AuthorizationPermissionResource {
     /**
      * An organization ID. Identifies the organization that owns the resource.
      */
-    orgId: pulumi.Input<string>;
+    orgId?: pulumi.Input<string>;
     /**
      * A resource type. Identifies the API resource's type (or kind).
      */
