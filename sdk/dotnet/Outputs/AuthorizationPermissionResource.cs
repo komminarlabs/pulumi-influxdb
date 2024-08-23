@@ -17,7 +17,7 @@ namespace KomminarLabs.InfluxDB.Outputs
         /// <summary>
         /// A resource ID. Identifies a specific resource.
         /// </summary>
-        public readonly string Id;
+        public readonly string? Id;
         /// <summary>
         /// The name of the resource. **Note:** not all resource types have a name property.
         /// </summary>
@@ -29,7 +29,7 @@ namespace KomminarLabs.InfluxDB.Outputs
         /// <summary>
         /// An organization ID. Identifies the organization that owns the resource.
         /// </summary>
-        public readonly string OrgId;
+        public readonly string? OrgId;
         /// <summary>
         /// A resource type. Identifies the API resource's type (or kind).
         /// </summary>
@@ -37,13 +37,13 @@ namespace KomminarLabs.InfluxDB.Outputs
 
         [OutputConstructor]
         private AuthorizationPermissionResource(
-            string id,
+            string? id,
 
             string? name,
 
             string? org,
 
-            string orgId,
+            string? orgId,
 
             string type)
         {

@@ -16,8 +16,8 @@ namespace KomminarLabs.InfluxDB.Inputs
         /// <summary>
         /// A resource ID. Identifies a specific resource.
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("id")]
+        public Input<string>? Id { get; set; }
 
         /// <summary>
         /// The name of the resource. **Note:** not all resource types have a name property.
@@ -34,8 +34,8 @@ namespace KomminarLabs.InfluxDB.Inputs
         /// <summary>
         /// An organization ID. Identifies the organization that owns the resource.
         /// </summary>
-        [Input("orgId", required: true)]
-        public Input<string> OrgId { get; set; } = null!;
+        [Input("orgId")]
+        public Input<string>? OrgId { get; set; }
 
         /// <summary>
         /// A resource type. Identifies the API resource's type (or kind).

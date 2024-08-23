@@ -50,49 +50,27 @@ class AuthorizationPermissionArgs:
 @pulumi.input_type
 class AuthorizationPermissionResourceArgs:
     def __init__(__self__, *,
-                 id: pulumi.Input[str],
-                 org_id: pulumi.Input[str],
                  type: pulumi.Input[str],
+                 id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 org: Optional[pulumi.Input[str]] = None):
+                 org: Optional[pulumi.Input[str]] = None,
+                 org_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: A resource ID. Identifies a specific resource.
-        :param pulumi.Input[str] org_id: An organization ID. Identifies the organization that owns the resource.
         :param pulumi.Input[str] type: A resource type. Identifies the API resource's type (or kind).
+        :param pulumi.Input[str] id: A resource ID. Identifies a specific resource.
         :param pulumi.Input[str] name: The name of the resource. **Note:** not all resource types have a name property.
         :param pulumi.Input[str] org: An organization name. The organization that owns the resource.
+        :param pulumi.Input[str] org_id: An organization ID. Identifies the organization that owns the resource.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "type", type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org is not None:
             pulumi.set(__self__, "org", org)
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
-        """
-        A resource ID. Identifies a specific resource.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Input[str]:
-        """
-        An organization ID. Identifies the organization that owns the resource.
-        """
-        return pulumi.get(self, "org_id")
-
-    @org_id.setter
-    def org_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "org_id", value)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
 
     @property
     @pulumi.getter
@@ -105,6 +83,18 @@ class AuthorizationPermissionResourceArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A resource ID. Identifies a specific resource.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -129,5 +119,17 @@ class AuthorizationPermissionResourceArgs:
     @org.setter
     def org(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "org", value)
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        An organization ID. Identifies the organization that owns the resource.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org_id", value)
 
 

@@ -67,41 +67,27 @@ class AuthorizationPermissionResource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 id: str,
-                 org_id: str,
                  type: str,
+                 id: Optional[str] = None,
                  name: Optional[str] = None,
-                 org: Optional[str] = None):
+                 org: Optional[str] = None,
+                 org_id: Optional[str] = None):
         """
-        :param str id: A resource ID. Identifies a specific resource.
-        :param str org_id: An organization ID. Identifies the organization that owns the resource.
         :param str type: A resource type. Identifies the API resource's type (or kind).
+        :param str id: A resource ID. Identifies a specific resource.
         :param str name: The name of the resource. **Note:** not all resource types have a name property.
         :param str org: An organization name. The organization that owns the resource.
+        :param str org_id: An organization ID. Identifies the organization that owns the resource.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "type", type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org is not None:
             pulumi.set(__self__, "org", org)
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        A resource ID. Identifies a specific resource.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> str:
-        """
-        An organization ID. Identifies the organization that owns the resource.
-        """
-        return pulumi.get(self, "org_id")
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
 
     @property
     @pulumi.getter
@@ -110,6 +96,14 @@ class AuthorizationPermissionResource(dict):
         A resource type. Identifies the API resource's type (or kind).
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        A resource ID. Identifies a specific resource.
+        """
+        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
@@ -126,6 +120,14 @@ class AuthorizationPermissionResource(dict):
         An organization name. The organization that owns the resource.
         """
         return pulumi.get(self, "org")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[str]:
+        """
+        An organization ID. Identifies the organization that owns the resource.
+        """
+        return pulumi.get(self, "org_id")
 
 
 @pulumi.output_type
@@ -163,7 +165,7 @@ class GetAuthorizationPermissionResourceResult(dict):
                  type: str):
         """
         :param str id: A resource ID. Identifies a specific resource.
-        :param str name: The name of the resource. Note: not all resource types have a name property.
+        :param str name: The name of the resource. **Note:** not all resource types have a name property.
         :param str org: An organization name. The organization that owns the resource.
         :param str org_id: An organization ID. Identifies the organization that owns the resource.
         :param str type: A resource type. Identifies the API resource's type (or kind).
@@ -186,7 +188,7 @@ class GetAuthorizationPermissionResourceResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the resource. Note: not all resource types have a name property.
+        The name of the resource. **Note:** not all resource types have a name property.
         """
         return pulumi.get(self, "name")
 
@@ -378,7 +380,7 @@ class GetAuthorizationsAuthorizationPermissionResourceResult(dict):
                  type: str):
         """
         :param str id: The authorization ID.
-        :param str name: The name of the resource. Note: not all resource types have a name property.
+        :param str name: The name of the resource. **Note:** not all resource types have a name property.
         :param str org: An Organization name. Specifies the organization that owns the authorization.
         :param str org_id: An organization ID. Specifies the organization that owns the authorization.
         :param str type: A resource type. Identifies the API resource's type (or kind).
@@ -401,7 +403,7 @@ class GetAuthorizationsAuthorizationPermissionResourceResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the resource. Note: not all resource types have a name property.
+        The name of the resource. **Note:** not all resource types have a name property.
         """
         return pulumi.get(self, "name")
 
