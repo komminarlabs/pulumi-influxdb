@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+## [1.2.2] - 2024-09-12
+
+## Updated:
+* Updated docs to include supported influxdb flavours.
+
 ## [1.2.1] - 2024-08-23
 
 ## Fixed:
