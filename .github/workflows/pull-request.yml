@@ -1,3 +1,5 @@
+# A bot ensures that these actions get synchronized - do not edit in this repository.
+
 name: PR
 
 on:
@@ -11,13 +13,13 @@ on:
       - .github/**
 
 env:
-  PROVIDER: influxdb
+  PROVIDER: cratedb
   ORG: komminarlabs
   DOTNETVERSION: |
     6.0.x
     3.1.301
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GOVERSION: 1.22.x
+  GOVERSION: 1.23.x
   NODEVERSION: 20.x
   PYTHONVERSION: "3.11"
   TF_APPEND_USER_AGENT: pulumi
@@ -41,7 +43,7 @@ jobs:
         with:
           cache-dependency-path: |
             sdk/go.sum
-          go-version: 1.22.x
+          go-version: ${{ env.GOVERSION }}
 
       - name: Install pulumictl
         uses: jaxxstorm/action-install-gh-release@v1.11.0
@@ -105,7 +107,7 @@ jobs:
         with:
           cache-dependency-path: |
             sdk/go.sum
-          go-version: 1.22.x
+          go-version: ${{ env.GOVERSION }}
 
       - name: Install pulumictl
         uses: jaxxstorm/action-install-gh-release@v1.11.0
