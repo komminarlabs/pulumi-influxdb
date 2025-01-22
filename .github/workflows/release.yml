@@ -1,3 +1,5 @@
+# A bot ensures that these actions get synchronized - do not edit in this repository.
+
 name: Release
 
 on:
@@ -29,7 +31,7 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-          - 1.22.x
+          - 1.23.x
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -65,7 +67,7 @@ jobs:
         dotnetversion:
           - 6.0.x
         goversion:
-          - 1.22.x
+          - 1.23.x
         nodeversion:
           - 20.x
         pythonversion:
