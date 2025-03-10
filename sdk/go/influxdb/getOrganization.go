@@ -43,15 +43,11 @@ type LookupOrganizationResult struct {
 }
 
 func LookupOrganizationOutput(ctx *pulumi.Context, args LookupOrganizationOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupOrganizationResultOutput, error) {
 			args := v.(LookupOrganizationArgs)
-			r, err := LookupOrganization(ctx, &args, opts...)
-			var s LookupOrganizationResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("influxdb:index/getOrganization:getOrganization", args, LookupOrganizationResultOutput{}, options).(LookupOrganizationResultOutput), nil
 		}).(LookupOrganizationResultOutput)
 }
 

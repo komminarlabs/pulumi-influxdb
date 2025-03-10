@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -24,7 +29,7 @@ class AuthorizationArgs:
                  user_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Authorization resource.
-        :param pulumi.Input[str] org_id: An organization ID. Identifies the organization that owns the resource.
+        :param pulumi.Input[str] org_id: An organization ID. Specifies the organization that owns the authorization.
         :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPermissionArgs']]] permissions: A list of permissions for an authorization.
         :param pulumi.Input[str] description: A description of the token.
         :param pulumi.Input[str] status: Status of the token. Valid values are `active` or `inactive`.
@@ -46,7 +51,7 @@ class AuthorizationArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[str]:
         """
-        An organization ID. Identifies the organization that owns the resource.
+        An organization ID. Specifies the organization that owns the authorization.
         """
         return pulumi.get(self, "org_id")
 
@@ -132,8 +137,8 @@ class _AuthorizationState:
         Input properties used for looking up and filtering Authorization resources.
         :param pulumi.Input[str] created_at: Authorization creation date.
         :param pulumi.Input[str] description: A description of the token.
-        :param pulumi.Input[str] org: An organization name. The organization that owns the resource.
-        :param pulumi.Input[str] org_id: An organization ID. Identifies the organization that owns the resource.
+        :param pulumi.Input[str] org: Organization name. Specifies the organization that owns the authorization.
+        :param pulumi.Input[str] org_id: An organization ID. Specifies the organization that owns the authorization.
         :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPermissionArgs']]] permissions: A list of permissions for an authorization.
         :param pulumi.Input[str] status: Status of the token. Valid values are `active` or `inactive`.
         :param pulumi.Input[str] token: The API token.
@@ -190,7 +195,7 @@ class _AuthorizationState:
     @pulumi.getter
     def org(self) -> Optional[pulumi.Input[str]]:
         """
-        An organization name. The organization that owns the resource.
+        Organization name. Specifies the organization that owns the authorization.
         """
         return pulumi.get(self, "org")
 
@@ -202,7 +207,7 @@ class _AuthorizationState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        An organization ID. Identifies the organization that owns the resource.
+        An organization ID. Specifies the organization that owns the authorization.
         """
         return pulumi.get(self, "org_id")
 
@@ -290,7 +295,7 @@ class Authorization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPermissionArgs', 'AuthorizationPermissionArgsDict']]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
@@ -301,8 +306,8 @@ class Authorization(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the token.
-        :param pulumi.Input[str] org_id: An organization ID. Identifies the organization that owns the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPermissionArgs']]]] permissions: A list of permissions for an authorization.
+        :param pulumi.Input[str] org_id: An organization ID. Specifies the organization that owns the authorization.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPermissionArgs', 'AuthorizationPermissionArgsDict']]]] permissions: A list of permissions for an authorization.
         :param pulumi.Input[str] status: Status of the token. Valid values are `active` or `inactive`.
         :param pulumi.Input[str] user: A user name. Specifies the user that the authorization is scoped to.
         :param pulumi.Input[str] user_id: A user ID. Specifies the user that the authorization is scoped to.
@@ -333,7 +338,7 @@ class Authorization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPermissionArgs', 'AuthorizationPermissionArgsDict']]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
@@ -376,7 +381,7 @@ class Authorization(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             org: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPermissionArgs']]]]] = None,
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPermissionArgs', 'AuthorizationPermissionArgsDict']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             token: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
@@ -391,9 +396,9 @@ class Authorization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: Authorization creation date.
         :param pulumi.Input[str] description: A description of the token.
-        :param pulumi.Input[str] org: An organization name. The organization that owns the resource.
-        :param pulumi.Input[str] org_id: An organization ID. Identifies the organization that owns the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorizationPermissionArgs']]]] permissions: A list of permissions for an authorization.
+        :param pulumi.Input[str] org: Organization name. Specifies the organization that owns the authorization.
+        :param pulumi.Input[str] org_id: An organization ID. Specifies the organization that owns the authorization.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AuthorizationPermissionArgs', 'AuthorizationPermissionArgsDict']]]] permissions: A list of permissions for an authorization.
         :param pulumi.Input[str] status: Status of the token. Valid values are `active` or `inactive`.
         :param pulumi.Input[str] token: The API token.
         :param pulumi.Input[str] updated_at: Last Authorization update date.
@@ -436,7 +441,7 @@ class Authorization(pulumi.CustomResource):
     @pulumi.getter
     def org(self) -> pulumi.Output[str]:
         """
-        An organization name. The organization that owns the resource.
+        Organization name. Specifies the organization that owns the authorization.
         """
         return pulumi.get(self, "org")
 
@@ -444,7 +449,7 @@ class Authorization(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         """
-        An organization ID. Identifies the organization that owns the resource.
+        An organization ID. Specifies the organization that owns the authorization.
         """
         return pulumi.get(self, "org_id")
 

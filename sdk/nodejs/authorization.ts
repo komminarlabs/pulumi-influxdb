@@ -46,11 +46,11 @@ export class Authorization extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * An organization name. The organization that owns the resource.
+     * Organization name. Specifies the organization that owns the authorization.
      */
     public /*out*/ readonly org!: pulumi.Output<string>;
     /**
-     * An organization ID. Identifies the organization that owns the resource.
+     * An organization ID. Specifies the organization that owns the authorization.
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -140,11 +140,11 @@ export interface AuthorizationState {
      */
     description?: pulumi.Input<string>;
     /**
-     * An organization name. The organization that owns the resource.
+     * Organization name. Specifies the organization that owns the authorization.
      */
     org?: pulumi.Input<string>;
     /**
-     * An organization ID. Identifies the organization that owns the resource.
+     * An organization ID. Specifies the organization that owns the authorization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -182,7 +182,7 @@ export interface AuthorizationArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * An organization ID. Identifies the organization that owns the resource.
+     * An organization ID. Specifies the organization that owns the authorization.
      */
     orgId: pulumi.Input<string>;
     /**

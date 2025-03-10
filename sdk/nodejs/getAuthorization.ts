@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * Retrieves an authorization. Use this data source to retrieve information about an API token, including the token's permissions and the user that the token is scoped to.
  */
 export function getAuthorization(args: GetAuthorizationArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorizationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("influxdb:index/getAuthorization:getAuthorization", {
         "id": args.id,
@@ -22,7 +21,7 @@ export function getAuthorization(args: GetAuthorizationArgs, opts?: pulumi.Invok
  */
 export interface GetAuthorizationArgs {
     /**
-     * A resource ID. Identifies a specific resource.
+     * The authorization ID.
      */
     id: string;
 }
@@ -79,8 +78,11 @@ export interface GetAuthorizationResult {
 /**
  * Retrieves an authorization. Use this data source to retrieve information about an API token, including the token's permissions and the user that the token is scoped to.
  */
-export function getAuthorizationOutput(args: GetAuthorizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorizationResult> {
-    return pulumi.output(args).apply((a: any) => getAuthorization(a, opts))
+export function getAuthorizationOutput(args: GetAuthorizationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthorizationResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("influxdb:index/getAuthorization:getAuthorization", {
+        "id": args.id,
+    }, opts);
 }
 
 /**
@@ -88,7 +90,7 @@ export function getAuthorizationOutput(args: GetAuthorizationOutputArgs, opts?: 
  */
 export interface GetAuthorizationOutputArgs {
     /**
-     * A resource ID. Identifies a specific resource.
+     * The authorization ID.
      */
     id: pulumi.Input<string>;
 }

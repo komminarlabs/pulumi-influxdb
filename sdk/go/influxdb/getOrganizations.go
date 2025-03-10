@@ -30,13 +30,9 @@ type GetOrganizationsResult struct {
 }
 
 func GetOrganizationsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetOrganizationsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetOrganizationsResult, error) {
-		r, err := GetOrganizations(ctx, opts...)
-		var s GetOrganizationsResult
-		if r != nil {
-			s = *r
-		}
-		return s, err
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetOrganizationsResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("influxdb:index/getOrganizations:getOrganizations", nil, GetOrganizationsResultOutput{}, options).(GetOrganizationsResultOutput), nil
 	}).(GetOrganizationsResultOutput)
 }
 

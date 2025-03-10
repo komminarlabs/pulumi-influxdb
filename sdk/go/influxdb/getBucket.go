@@ -49,15 +49,11 @@ type LookupBucketResult struct {
 }
 
 func LookupBucketOutput(ctx *pulumi.Context, args LookupBucketOutputArgs, opts ...pulumi.InvokeOption) LookupBucketResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBucketResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupBucketResultOutput, error) {
 			args := v.(LookupBucketArgs)
-			r, err := LookupBucket(ctx, &args, opts...)
-			var s LookupBucketResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("influxdb:index/getBucket:getBucket", args, LookupBucketResultOutput{}, options).(LookupBucketResultOutput), nil
 		}).(LookupBucketResultOutput)
 }
 

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -65,11 +70,13 @@ def get_authorizations(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
     return AwaitableGetAuthorizationsResult(
         authorizations=pulumi.get(__ret__, 'authorizations'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_authorizations)
-def get_authorizations_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthorizationsResult]:
+def get_authorizations_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthorizationsResult]:
     """
     Lists all authorizations.
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('influxdb:index/getAuthorizations:getAuthorizations', __args__, opts=opts, typ=GetAuthorizationsResult)
+    return __ret__.apply(lambda __response__: GetAuthorizationsResult(
+        authorizations=pulumi.get(__response__, 'authorizations'),
+        id=pulumi.get(__response__, 'id')))

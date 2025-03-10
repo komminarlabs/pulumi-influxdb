@@ -23,6 +23,12 @@ namespace KomminarLabs.InfluxDB
         /// </summary>
         public static Output<GetAuthorizationsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAuthorizationsResult>("influxdb:index/getAuthorizations:getAuthorizations", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Lists all authorizations.
+        /// </summary>
+        public static Output<GetAuthorizationsResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAuthorizationsResult>("influxdb:index/getAuthorizations:getAuthorizations", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

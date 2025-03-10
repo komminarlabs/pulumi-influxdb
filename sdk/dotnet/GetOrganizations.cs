@@ -23,6 +23,12 @@ namespace KomminarLabs.InfluxDB
         /// </summary>
         public static Output<GetOrganizationsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationsResult>("influxdb:index/getOrganizations:getOrganizations", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Lists organizations. InfluxDB returns all organizations.
+        /// </summary>
+        public static Output<GetOrganizationsResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationsResult>("influxdb:index/getOrganizations:getOrganizations", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

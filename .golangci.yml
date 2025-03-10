@@ -1,31 +1,79 @@
-linters:
-  enable:
-  - errcheck
-  - gci
-  - goconst
-  - gofmt
-  - gosec
-  - govet
-  - ineffassign
-  - lll
-  - megacheck
-  - misspell
-  - nakedret
-  - revive
-  - unconvert
-  - unused
-  enable-all: false
 run:
-  skip-files:
-  - schema.go
-  - pulumiManifest.go
-  timeout: 20m
+  timeout: 10m
+
+linters:
+  enable-all: false
+  enable:
+    - durationcheck
+    - errcheck
+    - gci
+    - gofumpt
+    - goheader
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - importas
+    - ineffassign
+    - lll
+    - misspell
+    - nakedret
+    - nolintlint
+    - revive
+    - staticcheck
+    - tenv
+    - unconvert
+    - unused
+    - paralleltest
+    - wastedassign
+    - whitespace
+issues:
+  exclude-rules:
+    # Exclude some linters from running on tests files.
+    - path: pkg/pf/tests
+      linters:
+        - lll
+        - paralleltest
+    - path: pkg/tests
+      linters:
+        - lll
+    - path: pkg/pf/tests
+      linters:
+        - lll
+        - paralleltest
+  exclude:
+    - "unused-parameter: parameter"
+    - "redefines-builtin-id:"
+    - "exhaustive"
+  exclude-dirs:
+    - pkg/tf2pulumi/internal/addrs
+    - pkg/tf2pulumi/internal/config
+    - pkg/tf2pulumi/internal/configs
+    - pkg/vendored
+    # TODO(https://github.com/pulumi/pulumi-terraform-bridge/issues/2474)
 linters-settings:
   gci:
     sections:
-      - standard # Standard section: captures all standard library packages.
-      - blank # Blank section: contains all blank imports.
-      - default # Default section: contains all imports that could not be matched to another section type.
-      - prefix(github.com/pulumi/) # Custom section: groups all imports with the github.com/pulumi/ prefix.
-      - prefix(github.com/komminarlabs/pulumi-influxdb) # Custom section: local imports
-    custom-order: true
+      - standard
+      - default
+      - prefix(github.com/pulumi/pulumi-terraform-bridge)
+    skip-generated: true
+  paralleltest:
+    ignore-missing-subtests: true
+  nakedret:
+    # Make an issue if func has more lines of code than this setting, and it has naked returns.
+    # Default: 30
+    max-func-lines: 60
+  govet:
+    enable:
+      - nilness
+      # Reject comparisons of reflect.Value with DeepEqual or '=='.
+      - reflectvaluecompare
+      # Reject sort.Slice calls with a non-slice argument.
+      - sortslice
+      # Detect write to struct/arrays by-value that aren't read again.
+      - unusedwrite
+  importas:
+    alias:
+    - pkg: github.com/pulumi/pulumi/sdk/v3/proto/go
+      alias: pulumirpc

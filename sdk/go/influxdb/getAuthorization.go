@@ -24,7 +24,7 @@ func LookupAuthorization(ctx *pulumi.Context, args *LookupAuthorizationArgs, opt
 
 // A collection of arguments for invoking getAuthorization.
 type LookupAuthorizationArgs struct {
-	// A resource ID. Identifies a specific resource.
+	// The authorization ID.
 	Id string `pulumi:"id"`
 }
 
@@ -55,21 +55,17 @@ type LookupAuthorizationResult struct {
 }
 
 func LookupAuthorizationOutput(ctx *pulumi.Context, args LookupAuthorizationOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorizationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAuthorizationResult, error) {
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupAuthorizationResultOutput, error) {
 			args := v.(LookupAuthorizationArgs)
-			r, err := LookupAuthorization(ctx, &args, opts...)
-			var s LookupAuthorizationResult
-			if r != nil {
-				s = *r
-			}
-			return s, err
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("influxdb:index/getAuthorization:getAuthorization", args, LookupAuthorizationResultOutput{}, options).(LookupAuthorizationResultOutput), nil
 		}).(LookupAuthorizationResultOutput)
 }
 
 // A collection of arguments for invoking getAuthorization.
 type LookupAuthorizationOutputArgs struct {
-	// A resource ID. Identifies a specific resource.
+	// The authorization ID.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 

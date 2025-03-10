@@ -23,6 +23,12 @@ namespace KomminarLabs.InfluxDB
         /// </summary>
         public static Output<GetBucketResult> Invoke(GetBucketInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketResult>("influxdb:index/getBucket:getBucket", args ?? new GetBucketInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves a bucket. Use this data source to retrieve information for a specific bucket.
+        /// </summary>
+        public static Output<GetBucketResult> Invoke(GetBucketInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBucketResult>("influxdb:index/getBucket:getBucket", args ?? new GetBucketInvokeArgs(), options.WithDefaults());
     }
 
 

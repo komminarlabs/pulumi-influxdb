@@ -15,7 +15,7 @@ namespace KomminarLabs.InfluxDB.Outputs
     public sealed class GetAuthorizationsAuthorizationPermissionResourceResult
     {
         /// <summary>
-        /// The authorization ID.
+        /// A resource ID. Identifies a specific resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -23,11 +23,11 @@ namespace KomminarLabs.InfluxDB.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// An Organization name. Specifies the organization that owns the authorization.
+        /// An organization name. The organization that owns the resource.
         /// </summary>
         public readonly string Org;
         /// <summary>
-        /// An organization ID. Specifies the organization that owns the authorization.
+        /// An organization ID. Identifies the organization that owns the resource.
         /// </summary>
         public readonly string OrgId;
         /// <summary>
