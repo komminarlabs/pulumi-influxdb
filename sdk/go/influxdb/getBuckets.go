@@ -30,13 +30,9 @@ type GetBucketsResult struct {
 }
 
 func GetBucketsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetBucketsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetBucketsResult, error) {
-		r, err := GetBuckets(ctx, opts...)
-		var s GetBucketsResult
-		if r != nil {
-			s = *r
-		}
-		return s, err
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetBucketsResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("influxdb:index/getBuckets:getBuckets", nil, GetBucketsResultOutput{}, options).(GetBucketsResultOutput), nil
 	}).(GetBucketsResultOutput)
 }
 

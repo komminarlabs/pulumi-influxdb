@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Retrieves an organization. Use this data source to retrieve information for a specific organization.
  */
 export function getOrganization(args: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("influxdb:index/getOrganization:getOrganization", {
         "name": args.name,
@@ -53,8 +52,11 @@ export interface GetOrganizationResult {
 /**
  * Retrieves an organization. Use this data source to retrieve information for a specific organization.
  */
-export function getOrganizationOutput(args: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
-    return pulumi.output(args).apply((a: any) => getOrganization(a, opts))
+export function getOrganizationOutput(args: GetOrganizationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("influxdb:index/getOrganization:getOrganization", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

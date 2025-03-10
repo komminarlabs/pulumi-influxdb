@@ -29,13 +29,13 @@ namespace KomminarLabs.InfluxDB
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// An organization name. The organization that owns the resource.
+        /// Organization name. Specifies the organization that owns the authorization.
         /// </summary>
         [Output("org")]
         public Output<string> Org { get; private set; } = null!;
 
         /// <summary>
-        /// An organization ID. Identifies the organization that owns the resource.
+        /// An organization ID. Specifies the organization that owns the authorization.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace KomminarLabs.InfluxDB
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// An organization ID. Identifies the organization that owns the resource.
+        /// An organization ID. Specifies the organization that owns the authorization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -190,13 +190,13 @@ namespace KomminarLabs.InfluxDB
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// An organization name. The organization that owns the resource.
+        /// Organization name. Specifies the organization that owns the authorization.
         /// </summary>
         [Input("org")]
         public Input<string>? Org { get; set; }
 
         /// <summary>
-        /// An organization ID. Identifies the organization that owns the resource.
+        /// An organization ID. Specifies the organization that owns the authorization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }

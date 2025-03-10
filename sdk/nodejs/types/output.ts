@@ -124,7 +124,7 @@ export interface GetAuthorizationsAuthorizationPermission {
 
 export interface GetAuthorizationsAuthorizationPermissionResource {
     /**
-     * The authorization ID.
+     * A resource ID. Identifies a specific resource.
      */
     id: string;
     /**
@@ -132,11 +132,11 @@ export interface GetAuthorizationsAuthorizationPermissionResource {
      */
     name: string;
     /**
-     * An Organization name. Specifies the organization that owns the authorization.
+     * An organization name. The organization that owns the resource.
      */
     org: string;
     /**
-     * An organization ID. Specifies the organization that owns the authorization.
+     * An organization ID. Identifies the organization that owns the resource.
      */
     orgId: string;
     /**

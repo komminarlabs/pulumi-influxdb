@@ -4,15 +4,34 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'AuthorizationPermissionArgs',
+    'AuthorizationPermissionArgsDict',
     'AuthorizationPermissionResourceArgs',
+    'AuthorizationPermissionResourceArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AuthorizationPermissionArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Permission action. Valid values are `read` or `write`.
+        """
+        resource: pulumi.Input['AuthorizationPermissionResourceArgsDict']
+elif False:
+    AuthorizationPermissionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AuthorizationPermissionArgs:
@@ -46,6 +65,31 @@ class AuthorizationPermissionArgs:
     def resource(self, value: pulumi.Input['AuthorizationPermissionResourceArgs']):
         pulumi.set(self, "resource", value)
 
+
+if not MYPY:
+    class AuthorizationPermissionResourceArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        A resource type. Identifies the API resource's type (or kind).
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        A resource ID. Identifies a specific resource.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the resource. **Note:** not all resource types have a name property.
+        """
+        org: NotRequired[pulumi.Input[str]]
+        """
+        An organization name. The organization that owns the resource.
+        """
+        org_id: NotRequired[pulumi.Input[str]]
+        """
+        An organization ID. Identifies the organization that owns the resource.
+        """
+elif False:
+    AuthorizationPermissionResourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AuthorizationPermissionResourceArgs:

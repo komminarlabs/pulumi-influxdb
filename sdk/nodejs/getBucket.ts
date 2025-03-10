@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * Retrieves a bucket. Use this data source to retrieve information for a specific bucket.
  */
 export function getBucket(args: GetBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("influxdb:index/getBucket:getBucket", {
         "name": args.name,
@@ -65,8 +64,11 @@ export interface GetBucketResult {
 /**
  * Retrieves a bucket. Use this data source to retrieve information for a specific bucket.
  */
-export function getBucketOutput(args: GetBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketResult> {
-    return pulumi.output(args).apply((a: any) => getBucket(a, opts))
+export function getBucketOutput(args: GetBucketOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBucketResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("influxdb:index/getBucket:getBucket", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

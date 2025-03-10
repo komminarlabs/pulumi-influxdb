@@ -690,13 +690,13 @@ func (o GetAuthorizationsAuthorizationPermissionArrayOutput) Index(i pulumi.IntI
 }
 
 type GetAuthorizationsAuthorizationPermissionResource struct {
-	// The authorization ID.
+	// A resource ID. Identifies a specific resource.
 	Id string `pulumi:"id"`
 	// The name of the resource. **Note:** not all resource types have a name property.
 	Name string `pulumi:"name"`
-	// An Organization name. Specifies the organization that owns the authorization.
+	// An organization name. The organization that owns the resource.
 	Org string `pulumi:"org"`
-	// An organization ID. Specifies the organization that owns the authorization.
+	// An organization ID. Identifies the organization that owns the resource.
 	OrgId string `pulumi:"orgId"`
 	// A resource type. Identifies the API resource's type (or kind).
 	Type string `pulumi:"type"`
@@ -714,13 +714,13 @@ type GetAuthorizationsAuthorizationPermissionResourceInput interface {
 }
 
 type GetAuthorizationsAuthorizationPermissionResourceArgs struct {
-	// The authorization ID.
+	// A resource ID. Identifies a specific resource.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the resource. **Note:** not all resource types have a name property.
 	Name pulumi.StringInput `pulumi:"name"`
-	// An Organization name. Specifies the organization that owns the authorization.
+	// An organization name. The organization that owns the resource.
 	Org pulumi.StringInput `pulumi:"org"`
-	// An organization ID. Specifies the organization that owns the authorization.
+	// An organization ID. Identifies the organization that owns the resource.
 	OrgId pulumi.StringInput `pulumi:"orgId"`
 	// A resource type. Identifies the API resource's type (or kind).
 	Type pulumi.StringInput `pulumi:"type"`
@@ -752,7 +752,7 @@ func (o GetAuthorizationsAuthorizationPermissionResourceOutput) ToGetAuthorizati
 	return o
 }
 
-// The authorization ID.
+// A resource ID. Identifies a specific resource.
 func (o GetAuthorizationsAuthorizationPermissionResourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorizationsAuthorizationPermissionResource) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -762,12 +762,12 @@ func (o GetAuthorizationsAuthorizationPermissionResourceOutput) Name() pulumi.St
 	return o.ApplyT(func(v GetAuthorizationsAuthorizationPermissionResource) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// An Organization name. Specifies the organization that owns the authorization.
+// An organization name. The organization that owns the resource.
 func (o GetAuthorizationsAuthorizationPermissionResourceOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorizationsAuthorizationPermissionResource) string { return v.Org }).(pulumi.StringOutput)
 }
 
-// An organization ID. Specifies the organization that owns the authorization.
+// An organization ID. Identifies the organization that owns the resource.
 func (o GetAuthorizationsAuthorizationPermissionResourceOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorizationsAuthorizationPermissionResource) string { return v.OrgId }).(pulumi.StringOutput)
 }

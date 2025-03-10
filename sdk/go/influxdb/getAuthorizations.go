@@ -30,13 +30,9 @@ type GetAuthorizationsResult struct {
 }
 
 func GetAuthorizationsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAuthorizationsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAuthorizationsResult, error) {
-		r, err := GetAuthorizations(ctx, opts...)
-		var s GetAuthorizationsResult
-		if r != nil {
-			s = *r
-		}
-		return s, err
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetAuthorizationsResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("influxdb:index/getAuthorizations:getAuthorizations", nil, GetAuthorizationsResultOutput{}, options).(GetAuthorizationsResultOutput), nil
 	}).(GetAuthorizationsResultOutput)
 }
 

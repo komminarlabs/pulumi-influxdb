@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -379,10 +384,10 @@ class GetAuthorizationsAuthorizationPermissionResourceResult(dict):
                  org_id: str,
                  type: str):
         """
-        :param str id: The authorization ID.
+        :param str id: A resource ID. Identifies a specific resource.
         :param str name: The name of the resource. **Note:** not all resource types have a name property.
-        :param str org: An Organization name. Specifies the organization that owns the authorization.
-        :param str org_id: An organization ID. Specifies the organization that owns the authorization.
+        :param str org: An organization name. The organization that owns the resource.
+        :param str org_id: An organization ID. Identifies the organization that owns the resource.
         :param str type: A resource type. Identifies the API resource's type (or kind).
         """
         pulumi.set(__self__, "id", id)
@@ -395,7 +400,7 @@ class GetAuthorizationsAuthorizationPermissionResourceResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The authorization ID.
+        A resource ID. Identifies a specific resource.
         """
         return pulumi.get(self, "id")
 
@@ -411,7 +416,7 @@ class GetAuthorizationsAuthorizationPermissionResourceResult(dict):
     @pulumi.getter
     def org(self) -> str:
         """
-        An Organization name. Specifies the organization that owns the authorization.
+        An organization name. The organization that owns the resource.
         """
         return pulumi.get(self, "org")
 
@@ -419,7 +424,7 @@ class GetAuthorizationsAuthorizationPermissionResourceResult(dict):
     @pulumi.getter(name="orgId")
     def org_id(self) -> str:
         """
-        An organization ID. Specifies the organization that owns the authorization.
+        An organization ID. Identifies the organization that owns the resource.
         """
         return pulumi.get(self, "org_id")
 

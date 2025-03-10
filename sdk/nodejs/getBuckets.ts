@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * Lists buckets. InfluxDB retrieves buckets owned by the organization associated with the authorization (API token).
  */
 export function getBuckets(opts?: pulumi.InvokeOptions): Promise<GetBucketsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("influxdb:index/getBuckets:getBuckets", {
     }, opts);
@@ -29,6 +28,8 @@ export interface GetBucketsResult {
 /**
  * Lists buckets. InfluxDB retrieves buckets owned by the organization associated with the authorization (API token).
  */
-export function getBucketsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketsResult> {
-    return pulumi.output(getBuckets(opts))
+export function getBucketsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBucketsResult> {
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("influxdb:index/getBuckets:getBuckets", {
+    }, opts);
 }

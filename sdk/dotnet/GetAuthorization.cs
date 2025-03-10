@@ -23,13 +23,19 @@ namespace KomminarLabs.InfluxDB
         /// </summary>
         public static Output<GetAuthorizationResult> Invoke(GetAuthorizationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAuthorizationResult>("influxdb:index/getAuthorization:getAuthorization", args ?? new GetAuthorizationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves an authorization. Use this data source to retrieve information about an API token, including the token's permissions and the user that the token is scoped to.
+        /// </summary>
+        public static Output<GetAuthorizationResult> Invoke(GetAuthorizationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAuthorizationResult>("influxdb:index/getAuthorization:getAuthorization", args ?? new GetAuthorizationInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetAuthorizationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A resource ID. Identifies a specific resource.
+        /// The authorization ID.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
@@ -43,7 +49,7 @@ namespace KomminarLabs.InfluxDB
     public sealed class GetAuthorizationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A resource ID. Identifies a specific resource.
+        /// The authorization ID.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

@@ -7,7 +7,7 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		org, err := influxdb.LookupOrganization(ctx, &influxdb.LookupOrganizationArgs{Name: "default"})
+		org, err := influxdb.LookupOrganization(ctx, &influxdb.LookupOrganizationArgs{Name: "IoT"})
 		if err != nil {
 			return err
 		}

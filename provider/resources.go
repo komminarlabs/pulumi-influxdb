@@ -1,22 +1,18 @@
 package influxdb
 
 import (
+	// Allow embedding bridge-metadata.json in the provider.
+	_ "embed"
 	"fmt"
 	"path"
 
-	// Allow embedding bridge-metadata.json in the provider.
-	_ "embed"
-
-	influxdbshim "github.com/komminarlabs/terraform-provider-influxdb/shim"
-
-	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-
 	// Import custom shim
 	"github.com/komminarlabs/pulumi-influxdb/provider/pkg/version"
+	influxdbshim "github.com/komminarlabs/terraform-provider-influxdb/shim"
+
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 )
 
 // all of the token components used below.
@@ -28,36 +24,27 @@ const (
 	mainMod = "index" // the influxdb module
 )
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(resource.PropertyMap, shim.ResourceConfig) error {
-	return nil
-}
-
 //go:embed cmd/pulumi-resource-influxdb/bridge-metadata.json
-var metadata []byte
+var bridgeMetadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	prov := tfbridge.ProviderInfo{
+	info := tfbridge.ProviderInfo{
 		// Instantiate the Terraform provider
-		P:                    pf.ShimProvider(influxdbshim.NewProvider()),
-		Name:                 "influxdb",
-		DisplayName:          "InfluxDB",
-		Publisher:            "komminarlabs",
-		Version:              version.Version,
-		LogoURL:              "https://avatars.githubusercontent.com/u/5713248?s=200&v=4",
-		PluginDownloadURL:    "github://api.github.com/komminarlabs",
-		Description:          "A Pulumi package for creating and managing InfluxDB resources.",
-		Keywords:             []string{"pulumi", "influxdb", "category/database"},
-		License:              "Apache-2.0",
-		Homepage:             "https://www.influxdata.com",
-		Repository:           "https://github.com/komminarlabs/pulumi-influxdb",
-		GitHubOrg:            "komminarlabs",
-		MetadataInfo:         tfbridge.NewProviderMetadata(metadata),
-		PreConfigureCallback: preConfigureCallback,
+		P:                 pfbridge.ShimProvider(influxdbshim.NewProvider(version.Version)),
+		Name:              "influxdb",
+		DisplayName:       "InfluxDB",
+		Publisher:         "komminarlabs",
+		Version:           version.Version,
+		LogoURL:           "https://avatars.githubusercontent.com/u/5713248?s=200&v=4",
+		PluginDownloadURL: "github://api.github.com/komminarlabs",
+		Description:       "A Pulumi package for creating and managing InfluxDB resources.",
+		Keywords:          []string{"pulumi", "influxdb", "category/database"},
+		License:           "Apache-2.0",
+		Homepage:          "https://www.influxdata.com",
+		Repository:        "https://github.com/komminarlabs/pulumi-influxdb",
+		GitHubOrg:         "komminarlabs",
+		MetadataInfo:      tfbridge.NewProviderMetadata(bridgeMetadata),
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"influxdb_authorization": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Authorization")},
 			"influxdb_bucket":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Bucket")},
@@ -107,10 +94,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	prov.MustComputeTokens(tokens.SingleModule("influxdb_", mainMod,
+	info.MustComputeTokens(tokens.SingleModule("influxdb_", mainMod,
 		tokens.MakeStandard(mainPkg)))
-	prov.MustApplyAutoAliases()
-	prov.SetAutonaming(255, "-")
+	info.MustApplyAutoAliases()
+	info.SetAutonaming(255, "-")
 
-	return prov
+	return info
 }

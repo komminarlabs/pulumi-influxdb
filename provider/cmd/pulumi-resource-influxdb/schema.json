@@ -279,7 +279,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "The authorization ID.\n"
+                    "description": "A resource ID. Identifies a specific resource.\n"
                 },
                 "name": {
                     "type": "string",
@@ -287,11 +287,11 @@
                 },
                 "org": {
                     "type": "string",
-                    "description": "An Organization name. Specifies the organization that owns the authorization.\n"
+                    "description": "An organization name. The organization that owns the resource.\n"
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "An organization ID. Specifies the organization that owns the authorization.\n"
+                    "description": "An organization ID. Identifies the organization that owns the resource.\n"
                 },
                 "type": {
                     "type": "string",
@@ -441,11 +441,11 @@
                 },
                 "org": {
                     "type": "string",
-                    "description": "An organization name. The organization that owns the resource.\n"
+                    "description": "Organization name. Specifies the organization that owns the authorization.\n"
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "An organization ID. Identifies the organization that owns the resource.\n"
+                    "description": "An organization ID. Specifies the organization that owns the authorization.\n"
                 },
                 "permissions": {
                     "type": "array",
@@ -493,7 +493,7 @@
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "An organization ID. Identifies the organization that owns the resource.\n"
+                    "description": "An organization ID. Specifies the organization that owns the authorization.\n"
                 },
                 "permissions": {
                     "type": "array",
@@ -532,11 +532,11 @@
                     },
                     "org": {
                         "type": "string",
-                        "description": "An organization name. The organization that owns the resource.\n"
+                        "description": "Organization name. Specifies the organization that owns the authorization.\n"
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "An organization ID. Identifies the organization that owns the resource.\n"
+                        "description": "An organization ID. Specifies the organization that owns the authorization.\n"
                     },
                     "permissions": {
                         "type": "array",
@@ -739,7 +739,7 @@
                 "properties": {
                     "id": {
                         "type": "string",
-                        "description": "A resource ID. Identifies a specific resource.\n"
+                        "description": "The authorization ID.\n"
                     }
                 },
                 "type": "object",
@@ -751,55 +751,54 @@
                 "description": "A collection of values returned by getAuthorization.\n",
                 "properties": {
                     "createdAt": {
-                        "type": "string",
-                        "description": "Authorization creation date.\n"
+                        "description": "Authorization creation date.\n",
+                        "type": "string"
                     },
                     "description": {
-                        "type": "string",
-                        "description": "A description of the token.\n"
+                        "description": "A description of the token.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The authorization ID.\n"
+                        "description": "The authorization ID.\n",
+                        "type": "string"
                     },
                     "org": {
-                        "type": "string",
-                        "description": "Organization name. Specifies the organization that owns the authorization.\n"
+                        "description": "Organization name. Specifies the organization that owns the authorization.\n",
+                        "type": "string"
                     },
                     "orgId": {
-                        "type": "string",
-                        "description": "An organization ID. Specifies the organization that owns the authorization.\n"
+                        "description": "An organization ID. Specifies the organization that owns the authorization.\n",
+                        "type": "string"
                     },
                     "permissions": {
-                        "type": "array",
+                        "description": "A list of permissions for an authorization.\n",
                         "items": {
                             "$ref": "#/types/influxdb:index/getAuthorizationPermission:getAuthorizationPermission"
                         },
-                        "description": "A list of permissions for an authorization.\n"
+                        "type": "array"
                     },
                     "status": {
-                        "type": "string",
-                        "description": "Status of the token.\n"
+                        "description": "Status of the token.\n",
+                        "type": "string"
                     },
                     "token": {
-                        "type": "string",
                         "description": "The API token.\n",
-                        "secret": true
+                        "secret": true,
+                        "type": "string"
                     },
                     "updatedAt": {
-                        "type": "string",
-                        "description": "Last Authorization update date.\n"
+                        "description": "Last Authorization update date.\n",
+                        "type": "string"
                     },
                     "user": {
-                        "type": "string",
-                        "description": "A user name. Specifies the user that the authorization is scoped to.\n"
+                        "description": "A user name. Specifies the user that the authorization is scoped to.\n",
+                        "type": "string"
                     },
                     "userId": {
-                        "type": "string",
-                        "description": "A user ID. Specifies the user that the authorization is scoped to.\n"
+                        "description": "A user ID. Specifies the user that the authorization is scoped to.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "createdAt",
                     "description",
@@ -812,7 +811,8 @@
                     "updatedAt",
                     "user",
                     "userId"
-                ]
+                ],
+                "type": "object"
             }
         },
         "influxdb:index/getAuthorizations:getAuthorizations": {
@@ -821,21 +821,21 @@
                 "description": "A collection of values returned by getAuthorizations.\n",
                 "properties": {
                     "authorizations": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/influxdb:index/getAuthorizationsAuthorization:getAuthorizationsAuthorization"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "authorizations",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "influxdb:index/getBucket:getBucket": {
@@ -857,39 +857,38 @@
                 "description": "A collection of values returned by getBucket.\n",
                 "properties": {
                     "createdAt": {
-                        "type": "string",
-                        "description": "Bucket creation date.\n"
+                        "description": "Bucket creation date.\n",
+                        "type": "string"
                     },
                     "description": {
-                        "type": "string",
-                        "description": "A description of the bucket.\n"
+                        "description": "A description of the bucket.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "A Bucket ID.\n"
+                        "description": "A Bucket ID.\n",
+                        "type": "string"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "A Bucket name.\n"
+                        "description": "A Bucket name.\n",
+                        "type": "string"
                     },
                     "orgId": {
-                        "type": "string",
-                        "description": "An organization ID.\n"
+                        "description": "An organization ID.\n",
+                        "type": "string"
                     },
                     "retentionPeriod": {
-                        "type": "integer",
-                        "description": "The duration in seconds for how long data will be kept in the database. `0` represents infinite retention.\n"
+                        "description": "The duration in seconds for how long data will be kept in the database. `0` represents infinite retention.\n",
+                        "type": "integer"
                     },
                     "type": {
-                        "type": "string",
-                        "description": "The Bucket type.\n"
+                        "description": "The Bucket type.\n",
+                        "type": "string"
                     },
                     "updatedAt": {
-                        "type": "string",
-                        "description": "Last bucket update date.\n"
+                        "description": "Last bucket update date.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "createdAt",
                     "description",
@@ -899,7 +898,8 @@
                     "retentionPeriod",
                     "type",
                     "updatedAt"
-                ]
+                ],
+                "type": "object"
             }
         },
         "influxdb:index/getBuckets:getBuckets": {
@@ -908,21 +908,21 @@
                 "description": "A collection of values returned by getBuckets.\n",
                 "properties": {
                     "buckets": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/influxdb:index/getBucketsBucket:getBucketsBucket"
-                        }
+                        },
+                        "type": "array"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "buckets",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "influxdb:index/getOrganization:getOrganization": {
@@ -944,34 +944,34 @@
                 "description": "A collection of values returned by getOrganization.\n",
                 "properties": {
                     "createdAt": {
-                        "type": "string",
-                        "description": "Organization creation date.\n"
+                        "description": "Organization creation date.\n",
+                        "type": "string"
                     },
                     "description": {
-                        "type": "string",
-                        "description": "The description of the organization.\n"
+                        "description": "The description of the organization.\n",
+                        "type": "string"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "An organization ID.\n"
+                        "description": "An organization ID.\n",
+                        "type": "string"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "The name of the organization.\n"
+                        "description": "The name of the organization.\n",
+                        "type": "string"
                     },
                     "updatedAt": {
-                        "type": "string",
-                        "description": "Last Organization update date.\n"
+                        "description": "Last Organization update date.\n",
+                        "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "createdAt",
                     "description",
                     "id",
                     "name",
                     "updatedAt"
-                ]
+                ],
+                "type": "object"
             }
         },
         "influxdb:index/getOrganizations:getOrganizations": {
@@ -980,21 +980,21 @@
                 "description": "A collection of values returned by getOrganizations.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "organizations": {
-                        "type": "array",
                         "items": {
                             "$ref": "#/types/influxdb:index/getOrganizationsOrganization:getOrganizationsOrganization"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "organizations",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         }
     }

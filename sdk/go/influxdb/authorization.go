@@ -20,9 +20,9 @@ type Authorization struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// A description of the token.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// An organization name. The organization that owns the resource.
+	// Organization name. Specifies the organization that owns the authorization.
 	Org pulumi.StringOutput `pulumi:"org"`
-	// An organization ID. Identifies the organization that owns the resource.
+	// An organization ID. Specifies the organization that owns the authorization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// A list of permissions for an authorization.
 	Permissions AuthorizationPermissionArrayOutput `pulumi:"permissions"`
@@ -82,9 +82,9 @@ type authorizationState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// A description of the token.
 	Description *string `pulumi:"description"`
-	// An organization name. The organization that owns the resource.
+	// Organization name. Specifies the organization that owns the authorization.
 	Org *string `pulumi:"org"`
-	// An organization ID. Identifies the organization that owns the resource.
+	// An organization ID. Specifies the organization that owns the authorization.
 	OrgId *string `pulumi:"orgId"`
 	// A list of permissions for an authorization.
 	Permissions []AuthorizationPermission `pulumi:"permissions"`
@@ -105,9 +105,9 @@ type AuthorizationState struct {
 	CreatedAt pulumi.StringPtrInput
 	// A description of the token.
 	Description pulumi.StringPtrInput
-	// An organization name. The organization that owns the resource.
+	// Organization name. Specifies the organization that owns the authorization.
 	Org pulumi.StringPtrInput
-	// An organization ID. Identifies the organization that owns the resource.
+	// An organization ID. Specifies the organization that owns the authorization.
 	OrgId pulumi.StringPtrInput
 	// A list of permissions for an authorization.
 	Permissions AuthorizationPermissionArrayInput
@@ -130,7 +130,7 @@ func (AuthorizationState) ElementType() reflect.Type {
 type authorizationArgs struct {
 	// A description of the token.
 	Description *string `pulumi:"description"`
-	// An organization ID. Identifies the organization that owns the resource.
+	// An organization ID. Specifies the organization that owns the authorization.
 	OrgId string `pulumi:"orgId"`
 	// A list of permissions for an authorization.
 	Permissions []AuthorizationPermission `pulumi:"permissions"`
@@ -146,7 +146,7 @@ type authorizationArgs struct {
 type AuthorizationArgs struct {
 	// A description of the token.
 	Description pulumi.StringPtrInput
-	// An organization ID. Identifies the organization that owns the resource.
+	// An organization ID. Specifies the organization that owns the authorization.
 	OrgId pulumi.StringInput
 	// A list of permissions for an authorization.
 	Permissions AuthorizationPermissionArrayInput
@@ -255,12 +255,12 @@ func (o AuthorizationOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authorization) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// An organization name. The organization that owns the resource.
+// Organization name. Specifies the organization that owns the authorization.
 func (o AuthorizationOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authorization) pulumi.StringOutput { return v.Org }).(pulumi.StringOutput)
 }
 
-// An organization ID. Identifies the organization that owns the resource.
+// An organization ID. Specifies the organization that owns the authorization.
 func (o AuthorizationOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authorization) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -171,7 +176,7 @@ def get_authorization(id: Optional[str] = None,
     Retrieves an authorization. Use this data source to retrieve information about an API token, including the token's permissions and the user that the token is scoped to.
 
 
-    :param str id: A resource ID. Identifies a specific resource.
+    :param str id: The authorization ID.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -190,15 +195,27 @@ def get_authorization(id: Optional[str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         user=pulumi.get(__ret__, 'user'),
         user_id=pulumi.get(__ret__, 'user_id'))
-
-
-@_utilities.lift_output_func(get_authorization)
 def get_authorization_output(id: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthorizationResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthorizationResult]:
     """
     Retrieves an authorization. Use this data source to retrieve information about an API token, including the token's permissions and the user that the token is scoped to.
 
 
-    :param str id: A resource ID. Identifies a specific resource.
+    :param str id: The authorization ID.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('influxdb:index/getAuthorization:getAuthorization', __args__, opts=opts, typ=GetAuthorizationResult)
+    return __ret__.apply(lambda __response__: GetAuthorizationResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        org=pulumi.get(__response__, 'org'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        permissions=pulumi.get(__response__, 'permissions'),
+        status=pulumi.get(__response__, 'status'),
+        token=pulumi.get(__response__, 'token'),
+        updated_at=pulumi.get(__response__, 'updated_at'),
+        user=pulumi.get(__response__, 'user'),
+        user_id=pulumi.get(__response__, 'user_id')))
