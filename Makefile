@@ -5,7 +5,6 @@ PROVIDER_PATH := provider
 VERSION_PATH := $(PROVIDER_PATH)/pkg/version.Version
 CODEGEN := pulumi-tfgen-$(PACK)
 PROVIDER := pulumi-resource-$(PACK)
-JAVA_GEN := pulumi-java-gen
 TESTPARALLELISM := 10
 GOTESTARGS := ""
 WORKING_DIR := $(shell pwd)
@@ -102,9 +101,10 @@ build_dotnet: .make/build_dotnet
 	cd sdk/dotnet/ && \
 		printf "module fake_dotnet_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
 		echo "$(PROVIDER_VERSION)" >version.txt
+	cp README.md sdk/dotnet/
 	@touch $@
 .make/build_dotnet: .make/generate_dotnet
-	cd sdk/dotnet/ && dotnet build
+	cd sdk/dotnet/ && dotnet build /p:Version=${PROVIDER_VERSION}
 	@touch $@
 .PHONY: generate_dotnet build_dotnet
 
@@ -119,22 +119,6 @@ build_go: .make/build_go
 	@touch $@
 .PHONY: generate_go build_go
 
-generate_java: .make/generate_java
-build_java: .make/build_java
-.make/generate_java: export PATH := $(WORKING_DIR)/.pulumi/bin:$(PATH)
-.make/generate_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
-.make/generate_java: .make/install_plugins bin/pulumi-java-gen .make/schema
-	PULUMI_HOME=$(GEN_PULUMI_HOME) PULUMI_CONVERT_EXAMPLES_CACHE_DIR=$(GEN_PULUMI_CONVERT_EXAMPLES_CACHE_DIR) bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
-	printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > sdk/java/go.mod
-	@touch $@
-.make/build_java: PACKAGE_VERSION := $(PROVIDER_VERSION)
-.make/build_java: .make/generate_java
-	cd sdk/java/ && \
-		gradle --console=plain build && \
-		gradle --console=plain javadoc
-	@touch $@
-.PHONY: generate_java build_java
-
 generate_nodejs: .make/generate_nodejs
 build_nodejs: .make/build_nodejs
 .make/generate_nodejs: export PATH := $(WORKING_DIR)/.pulumi/bin:$(PATH)
@@ -146,7 +130,9 @@ build_nodejs: .make/build_nodejs
 	cd sdk/nodejs/ && \
 		yarn install && \
 		yarn run tsc && \
-		cp ../../README.md ../../LICENSE* package.json yarn.lock ./bin/
+		cp ../../LICENSE* package.json yarn.lock ./bin/ && \
+		sed -i.bak -e "s/\$${VERSION}/$(PROVIDER_VERSION)/g" ./bin/package.json
+	cp README.md sdk/nodejs/
 	@touch $@
 .PHONY: generate_nodejs build_nodejs
 
@@ -161,6 +147,7 @@ build_python: .make/build_python
 .make/build_python: .make/generate_python
 	cd sdk/python/ && \
 		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
+		sed -i.bak -e 's/^VERSION = .*/VERSION = "$(PROVIDER_VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(PROVIDER_VERSION)"/g' ./bin/setup.py && \
 		rm ./bin/go.mod && \
 		python3 -m venv venv && \
 		./venv/bin/python -m pip install build==1.2.1 && \
@@ -187,13 +174,12 @@ install_dotnet_sdk: .make/install_dotnet_sdk
 	; fi
 	@touch $@
 install_go_sdk:
-install_java_sdk:
 install_nodejs_sdk: .make/install_nodejs_sdk
 .make/install_nodejs_sdk: .make/build_nodejs
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 	@touch $@
 install_python_sdk:
-.PHONY: install_dotnet_sdk install_go_sdk install_java_sdk install_nodejs_sdk install_python_sdk
+.PHONY: install_dotnet_sdk install_go_sdk install_nodejs_sdk install_python_sdk
 
 lint_provider: provider
 	cd provider && golangci-lint run --path-prefix provider -c ../.golangci.yml
@@ -254,13 +240,6 @@ upstream: .make/upstream
 	./scripts/upstream.sh init
 	@touch $@
 .PHONY: upstream
-
-bin/pulumi-java-gen: PULUMI_JAVA_VERSION := $(shell cat .pulumi-java-gen.version)
-bin/pulumi-java-gen: PLAT := $(shell go version | sed -En "s/go version go.* (.*)\/(.*)/\1-\2/p")
-bin/pulumi-java-gen: PULUMI_JAVA_URL := "https://github.com/pulumi/pulumi-java/releases/download/v$(PULUMI_JAVA_VERSION)/pulumi-language-java-v$(PULUMI_JAVA_VERSION)-$(PLAT).tar.gz"
-bin/pulumi-java-gen:
-	wget -q -O - "$(PULUMI_JAVA_URL)" | tar -xzf - -C $(WORKING_DIR)/bin pulumi-java-gen
-	@touch bin/pulumi-language-java
 
 # To make an immediately observable change to .ci-mgmt.yaml:
 #
