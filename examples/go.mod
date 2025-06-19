@@ -9,8 +9,8 @@ require (
 )
 
 replace (
-	/ithub.com/komminarlabs/pulumi-influxdb/provider => ../provider
-	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240202163305-e2a20ae13ef9
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250530111747-935112552988
+	github.com/komminarlabs/pulumi-influxdb/provider => ../provider
 	github.com/komminarlabs/terraform-provider-influxdb/shim => ../provider/shim
 )
 
