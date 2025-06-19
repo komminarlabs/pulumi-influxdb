@@ -1,0 +1,1 @@
+mkdir -p ~/.pulumi/plugins/influxdb-1.4.0/pulumi-resource-influxdb

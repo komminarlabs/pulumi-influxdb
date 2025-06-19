@@ -59,6 +59,11 @@
     },
     "config": {
         "variables": {
+            "password": {
+                "type": "string",
+                "description": "The InfluxDB password\n",
+                "secret": true
+            },
             "token": {
                 "type": "string",
                 "description": "An InfluxDB token string\n",
@@ -67,6 +72,10 @@
             "url": {
                 "type": "string",
                 "description": "The InfluxDB Cloud Dedicated server URL\n"
+            },
+            "username": {
+                "type": "string",
+                "description": "The InfluxDB username\n"
             }
         }
     },
@@ -405,6 +414,11 @@
     "provider": {
         "description": "The provider type for the influxdb package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
+            "password": {
+                "type": "string",
+                "description": "The InfluxDB password\n",
+                "secret": true
+            },
             "token": {
                 "type": "string",
                 "description": "An InfluxDB token string\n",
@@ -413,9 +427,18 @@
             "url": {
                 "type": "string",
                 "description": "The InfluxDB Cloud Dedicated server URL\n"
+            },
+            "username": {
+                "type": "string",
+                "description": "The InfluxDB username\n"
             }
         },
         "inputProperties": {
+            "password": {
+                "type": "string",
+                "description": "The InfluxDB password\n",
+                "secret": true
+            },
             "token": {
                 "type": "string",
                 "description": "An InfluxDB token string\n",
@@ -424,7 +447,14 @@
             "url": {
                 "type": "string",
                 "description": "The InfluxDB Cloud Dedicated server URL\n"
+            },
+            "username": {
+                "type": "string",
+                "description": "The InfluxDB username\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:influxdb/terraformConfig"
         }
     },
     "resources": {
@@ -993,6 +1023,35 @@
                 "required": [
                     "organizations",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:influxdb/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:influxdb"
+                    }
+                },
+                "type": "pulumi:providers:influxdb/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }

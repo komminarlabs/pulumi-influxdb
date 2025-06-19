@@ -59,8 +59,25 @@ dotnet add package KomminarLabs.InfluxDB
 
 The following configuration points are available for the `influxdb` provider:
 
-- `influxdb:url` (environment: `INFLUXDB_URL`) - The InfluxDB Cloud Dedicated server URL
+- `influxdb:password` (environment: `INFLUXDB_PASSWORD`) - The InfluxDB password
 - `influxdb:token` (environment: `INFLUXDB_TOKEN`) - An InfluxDB token string
+- `influxdb:url` (environment: `INFLUXDB_URL`) - The InfluxDB Cloud Dedicated server URL
+- `influxdb:username` (environment: `INFLUXDB_USERNAME`) - The InfluxDB username
+
+## Authentication
+
+The InfluxDB provider supports two [authentication methods](https://docs.influxdata.com/influxdb/v2/api/v2/#tag/Authentication):
+
+* Token-based authentication (recommended).
+* Username and password authentication.
+
+### Authentication Priority
+
+When both authentication methods are provided, **token authentication takes priority**. This means:
+
+- If both `token` and `username`/`password` are configured, the provider will use token authentication
+- Token authentication is the recommended method for better security and simplicity
+- Username/password authentication is used only when no token is provided
 
 ## Reference
 
