@@ -48,14 +48,21 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"influxdb_authorization": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Authorization")},
 			"influxdb_bucket":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Bucket")},
+			"influxdb_label":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Label")},
 			"influxdb_organization":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Organization")},
+			"influxdb_task":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Task")},
+			"influxdb_user":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"influxdb_authorization":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAuthorization")},
 			"influxdb_authorizations": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAuthorizations")},
 			"influxdb_bucket":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getBucket")},
 			"influxdb_buckets":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getBuckets")},
+			"influxdb_label":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getLabel")},
+			"influxdb_labels":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getLabels")},
 			"influxdb_organization":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getOrganization")},
+			"influxdb_task":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTask")},
+			"influxdb_tasks":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getTasks")},
 			"influxdb_organizations":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getOrganizations")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{

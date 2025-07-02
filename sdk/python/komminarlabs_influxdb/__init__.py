@@ -12,10 +12,19 @@ from .get_authorization import *
 from .get_authorizations import *
 from .get_bucket import *
 from .get_buckets import *
+from .get_label import *
+from .get_labels import *
 from .get_organization import *
 from .get_organizations import *
+from .get_task import *
+from .get_tasks import *
+from .get_user import *
+from .get_users import *
+from .label import *
 from .organization import *
 from .provider import *
+from .task import *
+from .user import *
 from ._inputs import *
 from . import outputs
 
@@ -47,10 +56,34 @@ _utilities.register(
  },
  {
   "pkg": "influxdb",
+  "mod": "index/label",
+  "fqn": "komminarlabs_influxdb",
+  "classes": {
+   "influxdb:index/label:Label": "Label"
+  }
+ },
+ {
+  "pkg": "influxdb",
   "mod": "index/organization",
   "fqn": "komminarlabs_influxdb",
   "classes": {
    "influxdb:index/organization:Organization": "Organization"
+  }
+ },
+ {
+  "pkg": "influxdb",
+  "mod": "index/task",
+  "fqn": "komminarlabs_influxdb",
+  "classes": {
+   "influxdb:index/task:Task": "Task"
+  }
+ },
+ {
+  "pkg": "influxdb",
+  "mod": "index/user",
+  "fqn": "komminarlabs_influxdb",
+  "classes": {
+   "influxdb:index/user:User": "User"
   }
  }
 ]

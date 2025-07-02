@@ -35,6 +35,16 @@ export const getBuckets: typeof import("./getBuckets").getBuckets = null as any;
 export const getBucketsOutput: typeof import("./getBuckets").getBucketsOutput = null as any;
 utilities.lazyLoad(exports, ["getBuckets","getBucketsOutput"], () => require("./getBuckets"));
 
+export { GetLabelArgs, GetLabelResult, GetLabelOutputArgs } from "./getLabel";
+export const getLabel: typeof import("./getLabel").getLabel = null as any;
+export const getLabelOutput: typeof import("./getLabel").getLabelOutput = null as any;
+utilities.lazyLoad(exports, ["getLabel","getLabelOutput"], () => require("./getLabel"));
+
+export { GetLabelsResult } from "./getLabels";
+export const getLabels: typeof import("./getLabels").getLabels = null as any;
+export const getLabelsOutput: typeof import("./getLabels").getLabelsOutput = null as any;
+utilities.lazyLoad(exports, ["getLabels","getLabelsOutput"], () => require("./getLabels"));
+
 export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
 export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
@@ -45,6 +55,31 @@ export const getOrganizations: typeof import("./getOrganizations").getOrganizati
 export const getOrganizationsOutput: typeof import("./getOrganizations").getOrganizationsOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganizations","getOrganizationsOutput"], () => require("./getOrganizations"));
 
+export { GetTaskArgs, GetTaskResult, GetTaskOutputArgs } from "./getTask";
+export const getTask: typeof import("./getTask").getTask = null as any;
+export const getTaskOutput: typeof import("./getTask").getTaskOutput = null as any;
+utilities.lazyLoad(exports, ["getTask","getTaskOutput"], () => require("./getTask"));
+
+export { GetTasksResult } from "./getTasks";
+export const getTasks: typeof import("./getTasks").getTasks = null as any;
+export const getTasksOutput: typeof import("./getTasks").getTasksOutput = null as any;
+utilities.lazyLoad(exports, ["getTasks","getTasksOutput"], () => require("./getTasks"));
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GetUsersResult } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
+
+export { LabelArgs, LabelState } from "./label";
+export type Label = import("./label").Label;
+export const Label: typeof import("./label").Label = null as any;
+utilities.lazyLoad(exports, ["Label"], () => require("./label"));
+
 export { OrganizationArgs, OrganizationState } from "./organization";
 export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
@@ -52,6 +87,16 @@ utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
 
 export * from "./provider";
 import { Provider } from "./provider";
+
+export { TaskArgs, TaskState } from "./task";
+export type Task = import("./task").Task;
+export const Task: typeof import("./task").Task = null as any;
+utilities.lazyLoad(exports, ["Task"], () => require("./task"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
 
 // Export sub-modules:
@@ -71,8 +116,14 @@ const _module = {
                 return new Authorization(name, <any>undefined, { urn })
             case "influxdb:index/bucket:Bucket":
                 return new Bucket(name, <any>undefined, { urn })
+            case "influxdb:index/label:Label":
+                return new Label(name, <any>undefined, { urn })
             case "influxdb:index/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "influxdb:index/task:Task":
+                return new Task(name, <any>undefined, { urn })
+            case "influxdb:index/user:User":
+                return new User(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -80,7 +131,10 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("influxdb", "index/authorization", _module)
 pulumi.runtime.registerResourceModule("influxdb", "index/bucket", _module)
+pulumi.runtime.registerResourceModule("influxdb", "index/label", _module)
 pulumi.runtime.registerResourceModule("influxdb", "index/organization", _module)
+pulumi.runtime.registerResourceModule("influxdb", "index/task", _module)
+pulumi.runtime.registerResourceModule("influxdb", "index/user", _module)
 pulumi.runtime.registerResourcePackage("influxdb", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

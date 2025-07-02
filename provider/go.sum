@@ -627,8 +627,8 @@ github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+o
 github.com/klauspost/compress v1.15.11/go.mod h1:QPwzmACJjUTFsnSHH934V6woptycfrDDJnH7hvFVbGM=
 github.com/klauspost/compress v1.16.7 h1:2mk3MPGNzKyxErAw8YaohYh69+pa4sIQSC0fPGCFR9I=
 github.com/klauspost/compress v1.16.7/go.mod h1:ntbaceVETuRiXiv4DpjP66DpAtAGkEQskQzEyD//IeE=
-github.com/komminarlabs/terraform-provider-influxdb v1.3.0 h1:dDwd2Q8008h5jXW4iGuAzpv+TPiYZxTr42USimzFrcw=
-github.com/komminarlabs/terraform-provider-influxdb v1.3.0/go.mod h1:a5DipFR2nAraC6JOPRuOy42PxB8cGH5aebzSCi4IPPM=
+github.com/komminarlabs/terraform-provider-influxdb v1.4.0 h1:c7gVdAHZDSvkvCZh1G51sS8n8urAwxqepO1yDW/uS0M=
+github.com/komminarlabs/terraform-provider-influxdb v1.4.0/go.mod h1:gI7T5CaQUp5EyMfyZqCnz+YND3F9Xs9IniCQwW7WbZY=
 github.com/kr/fs v0.1.0/go.mod h1:FFnZGqtBN9Gxj7eW1uZ42v5BccTP0vu6NEaFoC2HwRg=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pretty v0.3.1 h1:flRD4NNwYAUpkphVc1HcthR4KEIFJ65n8Mw5qdRn3LE=

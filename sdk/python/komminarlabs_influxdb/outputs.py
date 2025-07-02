@@ -19,13 +19,22 @@ from . import outputs
 __all__ = [
     'AuthorizationPermission',
     'AuthorizationPermissionResource',
+    'TaskLabel',
+    'TaskLinks',
     'GetAuthorizationPermissionResult',
     'GetAuthorizationPermissionResourceResult',
     'GetAuthorizationsAuthorizationResult',
     'GetAuthorizationsAuthorizationPermissionResult',
     'GetAuthorizationsAuthorizationPermissionResourceResult',
     'GetBucketsBucketResult',
+    'GetLabelsLabelResult',
     'GetOrganizationsOrganizationResult',
+    'GetTaskLabelResult',
+    'GetTaskLinksResult',
+    'GetTasksTaskResult',
+    'GetTasksTaskLabelResult',
+    'GetTasksTaskLinksResult',
+    'GetUsersUserResult',
 ]
 
 @pulumi.output_type
@@ -134,6 +143,157 @@ class AuthorizationPermissionResource(dict):
         An organization ID. Identifies the organization that owns the resource.
         """
         return pulumi.get(self, "org_id")
+
+
+@pulumi.output_type
+class TaskLabel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "orgId":
+            suggest = "org_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TaskLabel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TaskLabel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TaskLabel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: Optional[builtins.str] = None,
+                 name: Optional[builtins.str] = None,
+                 org_id: Optional[builtins.str] = None,
+                 properties: Optional[Mapping[str, builtins.str]] = None):
+        """
+        :param builtins.str id: The label ID.
+        :param builtins.str name: The label name.
+        :param builtins.str org_id: The organization ID.
+        :param Mapping[str, builtins.str] properties: The key-value pairs associated with this label.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[builtins.str]:
+        """
+        The label ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        """
+        The label name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[builtins.str]:
+        """
+        The organization ID.
+        """
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, builtins.str]]:
+        """
+        The key-value pairs associated with this label.
+        """
+        return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
+class TaskLinks(dict):
+    def __init__(__self__, *,
+                 labels: Optional[builtins.str] = None,
+                 logs: Optional[builtins.str] = None,
+                 members: Optional[builtins.str] = None,
+                 owners: Optional[builtins.str] = None,
+                 runs: Optional[builtins.str] = None,
+                 self: Optional[builtins.str] = None):
+        """
+        :param builtins.str labels: URI of resource.
+        :param builtins.str logs: URI of resource.
+        :param builtins.str members: URI of resource.
+        :param builtins.str owners: URI of resource.
+        :param builtins.str runs: URI of resource.
+        :param builtins.str self: URI of resource.
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if owners is not None:
+            pulumi.set(__self__, "owners", owners)
+        if runs is not None:
+            pulumi.set(__self__, "runs", runs)
+        if self is not None:
+            pulumi.set(__self__, "self", self)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[builtins.str]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def logs(self) -> Optional[builtins.str]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "logs")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[builtins.str]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def owners(self) -> Optional[builtins.str]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "owners")
+
+    @property
+    @pulumi.getter
+    def runs(self) -> Optional[builtins.str]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "runs")
+
+    @property
+    @pulumi.getter
+    def self(self) -> Optional[builtins.str]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "self")
 
 
 @pulumi.output_type
@@ -534,6 +694,57 @@ class GetBucketsBucketResult(dict):
 
 
 @pulumi.output_type
+class GetLabelsLabelResult(dict):
+    def __init__(__self__, *,
+                 id: builtins.str,
+                 name: builtins.str,
+                 org_id: builtins.str,
+                 properties: Mapping[str, builtins.str]):
+        """
+        :param builtins.str id: The label ID.
+        :param builtins.str name: The label name.
+        :param builtins.str org_id: The organization ID.
+        :param Mapping[str, builtins.str] properties: The key-value pairs associated with this label.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        The label ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The label name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> builtins.str:
+        """
+        The organization ID.
+        """
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, builtins.str]:
+        """
+        The key-value pairs associated with this label.
+        """
+        return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
 class GetOrganizationsOrganizationResult(dict):
     def __init__(__self__, *,
                  created_at: builtins.str,
@@ -593,5 +804,542 @@ class GetOrganizationsOrganizationResult(dict):
         Last Organization update date.
         """
         return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetTaskLabelResult(dict):
+    def __init__(__self__, *,
+                 id: builtins.str,
+                 name: builtins.str,
+                 org_id: builtins.str,
+                 properties: Mapping[str, builtins.str]):
+        """
+        :param builtins.str id: The label ID.
+        :param builtins.str name: The label name.
+        :param builtins.str org_id: The organization ID.
+        :param Mapping[str, builtins.str] properties: The key-value pairs associated with this label.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        The label ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The label name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> builtins.str:
+        """
+        The organization ID.
+        """
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, builtins.str]:
+        """
+        The key-value pairs associated with this label.
+        """
+        return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
+class GetTaskLinksResult(dict):
+    def __init__(__self__, *,
+                 labels: builtins.str,
+                 logs: builtins.str,
+                 members: builtins.str,
+                 owners: builtins.str,
+                 runs: builtins.str,
+                 self: builtins.str):
+        """
+        :param builtins.str labels: URI of resource.
+        :param builtins.str logs: URI of resource.
+        :param builtins.str members: URI of resource.
+        :param builtins.str owners: URI of resource.
+        :param builtins.str runs: URI of resource.
+        :param builtins.str self: URI of resource.
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "logs", logs)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "owners", owners)
+        pulumi.set(__self__, "runs", runs)
+        pulumi.set(__self__, "self", self)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def logs(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "logs")
+
+    @property
+    @pulumi.getter
+    def members(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def owners(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "owners")
+
+    @property
+    @pulumi.getter
+    def runs(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "runs")
+
+    @property
+    @pulumi.getter
+    def self(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "self")
+
+
+@pulumi.output_type
+class GetTasksTaskResult(dict):
+    def __init__(__self__, *,
+                 authorization_id: builtins.str,
+                 created_at: builtins.str,
+                 cron: builtins.str,
+                 description: builtins.str,
+                 every: builtins.str,
+                 flux: builtins.str,
+                 id: builtins.str,
+                 labels: Sequence['outputs.GetTasksTaskLabelResult'],
+                 last_run_error: builtins.str,
+                 last_run_status: builtins.str,
+                 latest_completed: builtins.str,
+                 links: 'outputs.GetTasksTaskLinksResult',
+                 name: builtins.str,
+                 offset: builtins.str,
+                 org: builtins.str,
+                 org_id: builtins.str,
+                 owner_id: builtins.str,
+                 status: builtins.str,
+                 updated_at: builtins.str):
+        """
+        :param builtins.str authorization_id: The authorization ID. Specifies the authorization used when the task communicates with the query engine.
+        :param builtins.str created_at: The timestamp when the task was created.
+        :param builtins.str cron: The Cron expression that defines the schedule on which the task runs. InfluxDB uses the system time when evaluating Cron expressions.
+        :param builtins.str description: The description of the task.
+        :param builtins.str every: The interval [duration literal](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) at which the task runs. every also determines when the task first runs, depending on the specified time.
+        :param builtins.str flux: The Flux script that the task executes.
+        :param builtins.str id: The task ID.
+        :param Sequence['GetTasksTaskLabelArgs'] labels: The labels associated with the task.
+        :param builtins.str last_run_error: The error message from the last task run, if any.
+        :param builtins.str last_run_status: The status of the last task run.
+        :param builtins.str latest_completed: A timestamp [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) of the latest scheduled and completed run.
+        :param 'GetTasksTaskLinksArgs' links: Links related to the task.
+        :param builtins.str name: The name of the task.
+        :param builtins.str offset: The duration to delay execution of the task after the scheduled time has elapsed. 0 removes the offset.
+        :param builtins.str org: The organization name. Specifies the organization that owns the task.
+        :param builtins.str org_id: The organization ID. Specifies the organization that owns the task.
+        :param builtins.str owner_id: The user ID. Specifies the owner of the task.
+        :param builtins.str status: The status of the task (`active` or `inactive`).
+        :param builtins.str updated_at: The timestamp when the task was last updated.
+        """
+        pulumi.set(__self__, "authorization_id", authorization_id)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "cron", cron)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "every", every)
+        pulumi.set(__self__, "flux", flux)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "last_run_error", last_run_error)
+        pulumi.set(__self__, "last_run_status", last_run_status)
+        pulumi.set(__self__, "latest_completed", latest_completed)
+        pulumi.set(__self__, "links", links)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "offset", offset)
+        pulumi.set(__self__, "org", org)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "owner_id", owner_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter(name="authorizationId")
+    def authorization_id(self) -> builtins.str:
+        """
+        The authorization ID. Specifies the authorization used when the task communicates with the query engine.
+        """
+        return pulumi.get(self, "authorization_id")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> builtins.str:
+        """
+        The timestamp when the task was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter
+    def cron(self) -> builtins.str:
+        """
+        The Cron expression that defines the schedule on which the task runs. InfluxDB uses the system time when evaluating Cron expressions.
+        """
+        return pulumi.get(self, "cron")
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        """
+        The description of the task.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def every(self) -> builtins.str:
+        """
+        The interval [duration literal](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) at which the task runs. every also determines when the task first runs, depending on the specified time.
+        """
+        return pulumi.get(self, "every")
+
+    @property
+    @pulumi.getter
+    def flux(self) -> builtins.str:
+        """
+        The Flux script that the task executes.
+        """
+        return pulumi.get(self, "flux")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        The task ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Sequence['outputs.GetTasksTaskLabelResult']:
+        """
+        The labels associated with the task.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastRunError")
+    def last_run_error(self) -> builtins.str:
+        """
+        The error message from the last task run, if any.
+        """
+        return pulumi.get(self, "last_run_error")
+
+    @property
+    @pulumi.getter(name="lastRunStatus")
+    def last_run_status(self) -> builtins.str:
+        """
+        The status of the last task run.
+        """
+        return pulumi.get(self, "last_run_status")
+
+    @property
+    @pulumi.getter(name="latestCompleted")
+    def latest_completed(self) -> builtins.str:
+        """
+        A timestamp [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) of the latest scheduled and completed run.
+        """
+        return pulumi.get(self, "latest_completed")
+
+    @property
+    @pulumi.getter
+    def links(self) -> 'outputs.GetTasksTaskLinksResult':
+        """
+        Links related to the task.
+        """
+        return pulumi.get(self, "links")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The name of the task.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> builtins.str:
+        """
+        The duration to delay execution of the task after the scheduled time has elapsed. 0 removes the offset.
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def org(self) -> builtins.str:
+        """
+        The organization name. Specifies the organization that owns the task.
+        """
+        return pulumi.get(self, "org")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> builtins.str:
+        """
+        The organization ID. Specifies the organization that owns the task.
+        """
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> builtins.str:
+        """
+        The user ID. Specifies the owner of the task.
+        """
+        return pulumi.get(self, "owner_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> builtins.str:
+        """
+        The status of the task (`active` or `inactive`).
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> builtins.str:
+        """
+        The timestamp when the task was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetTasksTaskLabelResult(dict):
+    def __init__(__self__, *,
+                 id: builtins.str,
+                 name: builtins.str,
+                 org_id: builtins.str,
+                 properties: Mapping[str, builtins.str]):
+        """
+        :param builtins.str id: The label ID.
+        :param builtins.str name: The label name.
+        :param builtins.str org_id: The organization ID.
+        :param Mapping[str, builtins.str] properties: The key-value pairs associated with this label.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        The label ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The label name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> builtins.str:
+        """
+        The organization ID.
+        """
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, builtins.str]:
+        """
+        The key-value pairs associated with this label.
+        """
+        return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
+class GetTasksTaskLinksResult(dict):
+    def __init__(__self__, *,
+                 labels: builtins.str,
+                 logs: builtins.str,
+                 members: builtins.str,
+                 owners: builtins.str,
+                 runs: builtins.str,
+                 self: builtins.str):
+        """
+        :param builtins.str labels: URI of resource.
+        :param builtins.str logs: URI of resource.
+        :param builtins.str members: URI of resource.
+        :param builtins.str owners: URI of resource.
+        :param builtins.str runs: URI of resource.
+        :param builtins.str self: URI of resource.
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "logs", logs)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "owners", owners)
+        pulumi.set(__self__, "runs", runs)
+        pulumi.set(__self__, "self", self)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def logs(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "logs")
+
+    @property
+    @pulumi.getter
+    def members(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def owners(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "owners")
+
+    @property
+    @pulumi.getter
+    def runs(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "runs")
+
+    @property
+    @pulumi.getter
+    def self(self) -> builtins.str:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "self")
+
+
+@pulumi.output_type
+class GetUsersUserResult(dict):
+    def __init__(__self__, *,
+                 id: builtins.str,
+                 name: builtins.str,
+                 org_id: builtins.str,
+                 org_role: builtins.str,
+                 password: builtins.str,
+                 status: builtins.str):
+        """
+        :param builtins.str id: The user ID.
+        :param builtins.str name: The user name.
+        :param builtins.str org_id: The organization ID that the user belongs to. Null if the user is not a member of any organization.
+        :param builtins.str org_role: The role of the user in the organization (`member` or `owner`). Null if the user is not a member of any organization.
+        :param builtins.str password: The password of the user. This will be always `null`.
+        :param builtins.str status: The status of a user.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "org_role", org_role)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        """
+        The user ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The user name.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> builtins.str:
+        """
+        The organization ID that the user belongs to. Null if the user is not a member of any organization.
+        """
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter(name="orgRole")
+    def org_role(self) -> builtins.str:
+        """
+        The role of the user in the organization (`member` or `owner`). Null if the user is not a member of any organization.
+        """
+        return pulumi.get(self, "org_role")
+
+    @property
+    @pulumi.getter
+    def password(self) -> builtins.str:
+        """
+        The password of the user. This will be always `null`.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def status(self) -> builtins.str:
+        """
+        The status of a user.
+        """
+        return pulumi.get(self, "status")
 
 

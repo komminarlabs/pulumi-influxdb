@@ -25,8 +25,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Authorization{}
 	case "influxdb:index/bucket:Bucket":
 		r = &Bucket{}
+	case "influxdb:index/label:Label":
+		r = &Label{}
 	case "influxdb:index/organization:Organization":
 		r = &Organization{}
+	case "influxdb:index/task:Task":
+		r = &Task{}
+	case "influxdb:index/user:User":
+		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -70,7 +76,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"influxdb",
+		"index/label",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"influxdb",
 		"index/organization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"influxdb",
+		"index/task",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"influxdb",
+		"index/user",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

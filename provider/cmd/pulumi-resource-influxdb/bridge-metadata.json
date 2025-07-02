@@ -14,8 +14,25 @@
                 "current": "influxdb:index/bucket:Bucket",
                 "majorVersion": 1
             },
+            "influxdb_label": {
+                "current": "influxdb:index/label:Label",
+                "majorVersion": 1
+            },
             "influxdb_organization": {
                 "current": "influxdb:index/organization:Organization",
+                "majorVersion": 1
+            },
+            "influxdb_task": {
+                "current": "influxdb:index/task:Task",
+                "majorVersion": 1,
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "influxdb_user": {
+                "current": "influxdb:index/user:User",
                 "majorVersion": 1
             }
         },
@@ -58,6 +75,19 @@
                     }
                 }
             },
+            "influxdb_label": {
+                "current": "influxdb:index/getLabel:getLabel",
+                "majorVersion": 1
+            },
+            "influxdb_labels": {
+                "current": "influxdb:index/getLabels:getLabels",
+                "majorVersion": 1,
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "influxdb_organization": {
                 "current": "influxdb:index/getOrganization:getOrganization",
                 "majorVersion": 1
@@ -67,6 +97,44 @@
                 "majorVersion": 1,
                 "fields": {
                     "organizations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "influxdb_task": {
+                "current": "influxdb:index/getTask:getTask",
+                "majorVersion": 1,
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "influxdb_tasks": {
+                "current": "influxdb:index/getTasks:getTasks",
+                "majorVersion": 1,
+                "fields": {
+                    "tasks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "labels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "influxdb_user": {
+                "current": "influxdb:index/getUser:getUser",
+                "majorVersion": 1
+            },
+            "influxdb_users": {
+                "current": "influxdb:index/getUsers:getUsers",
+                "majorVersion": 1,
+                "fields": {
+                    "users": {
                         "maxItemsOne": false
                     }
                 }
