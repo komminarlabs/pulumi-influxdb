@@ -180,6 +180,25 @@ export interface GetBucketsBucket {
     updatedAt: string;
 }
 
+export interface GetLabelsLabel {
+    /**
+     * The label ID.
+     */
+    id: string;
+    /**
+     * The label name.
+     */
+    name: string;
+    /**
+     * The organization ID.
+     */
+    orgId: string;
+    /**
+     * The key-value pairs associated with this label.
+     */
+    properties: {[key: string]: string};
+}
+
 export interface GetOrganizationsOrganization {
     /**
      * Organization creation date.
@@ -201,5 +220,249 @@ export interface GetOrganizationsOrganization {
      * Last Organization update date.
      */
     updatedAt: string;
+}
+
+export interface GetTaskLabel {
+    /**
+     * The label ID.
+     */
+    id: string;
+    /**
+     * The label name.
+     */
+    name: string;
+    /**
+     * The organization ID.
+     */
+    orgId: string;
+    /**
+     * The key-value pairs associated with this label.
+     */
+    properties: {[key: string]: string};
+}
+
+export interface GetTaskLinks {
+    /**
+     * URI of resource.
+     */
+    labels: string;
+    /**
+     * URI of resource.
+     */
+    logs: string;
+    /**
+     * URI of resource.
+     */
+    members: string;
+    /**
+     * URI of resource.
+     */
+    owners: string;
+    /**
+     * URI of resource.
+     */
+    runs: string;
+    /**
+     * URI of resource.
+     */
+    self: string;
+}
+
+export interface GetTasksTask {
+    /**
+     * The authorization ID. Specifies the authorization used when the task communicates with the query engine.
+     */
+    authorizationId: string;
+    /**
+     * The timestamp when the task was created.
+     */
+    createdAt: string;
+    /**
+     * The Cron expression that defines the schedule on which the task runs. InfluxDB uses the system time when evaluating Cron expressions.
+     */
+    cron: string;
+    /**
+     * The description of the task.
+     */
+    description: string;
+    /**
+     * The interval [duration literal](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) at which the task runs. every also determines when the task first runs, depending on the specified time.
+     */
+    every: string;
+    /**
+     * The Flux script that the task executes.
+     */
+    flux: string;
+    /**
+     * The task ID.
+     */
+    id: string;
+    /**
+     * The labels associated with the task.
+     */
+    labels: outputs.GetTasksTaskLabel[];
+    /**
+     * The error message from the last task run, if any.
+     */
+    lastRunError: string;
+    /**
+     * The status of the last task run.
+     */
+    lastRunStatus: string;
+    /**
+     * A timestamp [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) of the latest scheduled and completed run.
+     */
+    latestCompleted: string;
+    /**
+     * Links related to the task.
+     */
+    links: outputs.GetTasksTaskLinks;
+    /**
+     * The name of the task.
+     */
+    name: string;
+    /**
+     * The duration to delay execution of the task after the scheduled time has elapsed. 0 removes the offset.
+     */
+    offset: string;
+    /**
+     * The organization name. Specifies the organization that owns the task.
+     */
+    org: string;
+    /**
+     * The organization ID. Specifies the organization that owns the task.
+     */
+    orgId: string;
+    /**
+     * The user ID. Specifies the owner of the task.
+     */
+    ownerId: string;
+    /**
+     * The status of the task (`active` or `inactive`).
+     */
+    status: string;
+    /**
+     * The timestamp when the task was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetTasksTaskLabel {
+    /**
+     * The label ID.
+     */
+    id: string;
+    /**
+     * The label name.
+     */
+    name: string;
+    /**
+     * The organization ID.
+     */
+    orgId: string;
+    /**
+     * The key-value pairs associated with this label.
+     */
+    properties: {[key: string]: string};
+}
+
+export interface GetTasksTaskLinks {
+    /**
+     * URI of resource.
+     */
+    labels: string;
+    /**
+     * URI of resource.
+     */
+    logs: string;
+    /**
+     * URI of resource.
+     */
+    members: string;
+    /**
+     * URI of resource.
+     */
+    owners: string;
+    /**
+     * URI of resource.
+     */
+    runs: string;
+    /**
+     * URI of resource.
+     */
+    self: string;
+}
+
+export interface GetUsersUser {
+    /**
+     * The user ID.
+     */
+    id: string;
+    /**
+     * The user name.
+     */
+    name: string;
+    /**
+     * The organization ID that the user belongs to. Null if the user is not a member of any organization.
+     */
+    orgId: string;
+    /**
+     * The role of the user in the organization (`member` or `owner`). Null if the user is not a member of any organization.
+     */
+    orgRole: string;
+    /**
+     * The password of the user. This will be always `null`.
+     */
+    password: string;
+    /**
+     * The status of a user.
+     */
+    status: string;
+}
+
+export interface TaskLabel {
+    /**
+     * The label ID.
+     */
+    id: string;
+    /**
+     * The label name.
+     */
+    name: string;
+    /**
+     * The organization ID.
+     */
+    orgId: string;
+    /**
+     * The key-value pairs associated with this label.
+     */
+    properties: {[key: string]: string};
+}
+
+export interface TaskLinks {
+    /**
+     * URI of resource.
+     */
+    labels: string;
+    /**
+     * URI of resource.
+     */
+    logs: string;
+    /**
+     * URI of resource.
+     */
+    members: string;
+    /**
+     * URI of resource.
+     */
+    owners: string;
+    /**
+     * URI of resource.
+     */
+    runs: string;
+    /**
+     * URI of resource.
+     */
+    self: string;
 }
 

@@ -21,14 +21,23 @@
         "getAuthorizations.ts",
         "getBucket.ts",
         "getBuckets.ts",
+        "getLabel.ts",
+        "getLabels.ts",
         "getOrganization.ts",
         "getOrganizations.ts",
+        "getTask.ts",
+        "getTasks.ts",
+        "getUser.ts",
+        "getUsers.ts",
         "index.ts",
+        "label.ts",
         "organization.ts",
         "provider.ts",
+        "task.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
+        "user.ts",
         "utilities.ts"
     ]
 }

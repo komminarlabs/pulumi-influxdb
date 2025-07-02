@@ -36,3 +36,48 @@ export interface AuthorizationPermissionResource {
     type: pulumi.Input<string>;
 }
 
+export interface TaskLabel {
+    /**
+     * The label ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The label name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The organization ID.
+     */
+    orgId?: pulumi.Input<string>;
+    /**
+     * The key-value pairs associated with this label.
+     */
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface TaskLinks {
+    /**
+     * URI of resource.
+     */
+    labels?: pulumi.Input<string>;
+    /**
+     * URI of resource.
+     */
+    logs?: pulumi.Input<string>;
+    /**
+     * URI of resource.
+     */
+    members?: pulumi.Input<string>;
+    /**
+     * URI of resource.
+     */
+    owners?: pulumi.Input<string>;
+    /**
+     * URI of resource.
+     */
+    runs?: pulumi.Input<string>;
+    /**
+     * URI of resource.
+     */
+    self?: pulumi.Input<string>;
+}

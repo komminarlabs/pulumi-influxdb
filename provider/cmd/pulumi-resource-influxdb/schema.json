@@ -134,6 +134,81 @@
                 }
             }
         },
+        "influxdb:index/TaskLabel:TaskLabel": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The label ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The label name.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID.\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The key-value pairs associated with this label.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "name",
+                        "orgId",
+                        "properties"
+                    ]
+                }
+            }
+        },
+        "influxdb:index/TaskLinks:TaskLinks": {
+            "properties": {
+                "labels": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "logs": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "members": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "owners": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "runs": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "self": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "labels",
+                        "logs",
+                        "members",
+                        "owners",
+                        "runs",
+                        "self"
+                    ]
+                }
+            }
+        },
         "influxdb:index/getAuthorizationPermission:getAuthorizationPermission": {
             "properties": {
                 "action": {
@@ -373,6 +448,41 @@
                 }
             }
         },
+        "influxdb:index/getLabelsLabel:getLabelsLabel": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The label ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The label name.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID.\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The key-value pairs associated with this label.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "orgId",
+                "properties"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "influxdb:index/getOrganizationsOrganization:getOrganizationsOrganization": {
             "properties": {
                 "createdAt": {
@@ -403,6 +513,313 @@
                 "id",
                 "name",
                 "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "influxdb:index/getTaskLabel:getTaskLabel": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The label ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The label name.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID.\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The key-value pairs associated with this label.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "orgId",
+                "properties"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "influxdb:index/getTaskLinks:getTaskLinks": {
+            "properties": {
+                "labels": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "logs": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "members": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "owners": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "runs": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "self": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "labels",
+                "logs",
+                "members",
+                "owners",
+                "runs",
+                "self"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "influxdb:index/getTasksTask:getTasksTask": {
+            "properties": {
+                "authorizationId": {
+                    "type": "string",
+                    "description": "The authorization ID. Specifies the authorization used when the task communicates with the query engine.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The timestamp when the task was created.\n"
+                },
+                "cron": {
+                    "type": "string",
+                    "description": "The Cron expression that defines the schedule on which the task runs. InfluxDB uses the system time when evaluating Cron expressions.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the task.\n"
+                },
+                "every": {
+                    "type": "string",
+                    "description": "The interval [duration literal](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) at which the task runs. every also determines when the task first runs, depending on the specified time.\n"
+                },
+                "flux": {
+                    "type": "string",
+                    "description": "The Flux script that the task executes.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The task ID.\n"
+                },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/influxdb:index/getTasksTaskLabel:getTasksTaskLabel"
+                    },
+                    "description": "The labels associated with the task.\n"
+                },
+                "lastRunError": {
+                    "type": "string",
+                    "description": "The error message from the last task run, if any.\n"
+                },
+                "lastRunStatus": {
+                    "type": "string",
+                    "description": "The status of the last task run.\n"
+                },
+                "latestCompleted": {
+                    "type": "string",
+                    "description": "A timestamp [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) of the latest scheduled and completed run.\n"
+                },
+                "links": {
+                    "$ref": "#/types/influxdb:index/getTasksTaskLinks:getTasksTaskLinks",
+                    "description": "Links related to the task.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the task.\n"
+                },
+                "offset": {
+                    "type": "string",
+                    "description": "The duration to delay execution of the task after the scheduled time has elapsed. 0 removes the offset.\n"
+                },
+                "org": {
+                    "type": "string",
+                    "description": "The organization name. Specifies the organization that owns the task.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID. Specifies the organization that owns the task.\n"
+                },
+                "ownerId": {
+                    "type": "string",
+                    "description": "The user ID. Specifies the owner of the task.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the task (`active` or `inactive`).\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The timestamp when the task was last updated.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authorizationId",
+                "createdAt",
+                "cron",
+                "description",
+                "every",
+                "flux",
+                "id",
+                "labels",
+                "lastRunError",
+                "lastRunStatus",
+                "latestCompleted",
+                "links",
+                "name",
+                "offset",
+                "org",
+                "orgId",
+                "ownerId",
+                "status",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "influxdb:index/getTasksTaskLabel:getTasksTaskLabel": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The label ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The label name.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID.\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The key-value pairs associated with this label.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "orgId",
+                "properties"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "influxdb:index/getTasksTaskLinks:getTasksTaskLinks": {
+            "properties": {
+                "labels": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "logs": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "members": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "owners": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "runs": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                },
+                "self": {
+                    "type": "string",
+                    "description": "URI of resource.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "labels",
+                "logs",
+                "members",
+                "owners",
+                "runs",
+                "self"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "influxdb:index/getUsersUser:getUsersUser": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The user ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The user name.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID that the user belongs to. Null if the user is not a member of any organization.\n"
+                },
+                "orgRole": {
+                    "type": "string",
+                    "description": "The role of the user in the organization (`member` or `owner`). Null if the user is not a member of any organization.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password of the user. This will be always `null`.\n",
+                    "secret": true
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of a user.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "orgId",
+                "orgRole",
+                "password",
+                "status"
             ],
             "language": {
                 "nodejs": {
@@ -701,6 +1118,71 @@
                 "type": "object"
             }
         },
+        "influxdb:index/label:Label": {
+            "description": "Creates and manages a label.\n",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "A label name.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID.\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The key-value pairs to associate with this label.\n"
+                }
+            },
+            "required": [
+                "name",
+                "orgId"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "A label name.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID.\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The key-value pairs to associate with this label.\n"
+                }
+            },
+            "requiredInputs": [
+                "orgId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Label resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "A label name.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "The organization ID.\n"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The key-value pairs to associate with this label.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "influxdb:index/organization:Organization": {
             "description": "Creates and manages new organization.\n",
             "properties": {
@@ -755,6 +1237,289 @@
                     "updatedAt": {
                         "type": "string",
                         "description": "Last Organization update date.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "influxdb:index/task:Task": {
+            "description": "Creates and manages a task using Flux scripts with task options.\n\n## Task Configuration\n\nTasks are configured using Flux scripts that include an `option task` block. All task configuration, including scheduling, is defined within the Flux script itself. For more information on Flux scripts and task options, refer to the [InfluxDB documentation on tasks](https://docs.influxdata.com/influxdb/v2/process-data/get-started/#components-of-a-task).\n\n### Task Options in Flux\n\nThe Flux script must include an `option task` block that defines the task's behavior. For detailed information about all available task options, see the [InfluxDB documentation on defining task options](https://docs.influxdata.com/influxdb/v2/process-data/get-started/#define-task-options).\n\n**Example configuration with cron scheduling:**\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as influxdb from \"@komminarlabs/influxdb\";\n\nconst exampleCron = new influxdb.Task(\"example_cron\", {\n    orgId: orgId,\n    flux: `option task = {\n  name: \"Daily Processing Task\",\n  cron: \"0 0 * * *\",        # Run daily at midnight\n  offset: 30s,              # Delay execution by 30 seconds\n}\n    \nfrom(bucket: \"my-bucket\")\n  |\u003e range(start: -24h)\n  |\u003e filter(fn: (r) =\u003e r._measurement == \"temperature\")\n  |\u003e mean()\n  |\u003e to(bucket: \"daily-averages\")\n`,\n});\n```\n```python\nimport pulumi\nimport komminarlabs_influxdb as influxdb\n\nexample_cron = influxdb.Task(\"example_cron\",\n    org_id=org_id,\n    flux=\"\"\"option task = {\n  name: \"Daily Processing Task\",\n  cron: \"0 0 * * *\",        # Run daily at midnight\n  offset: 30s,              # Delay execution by 30 seconds\n}\n    \nfrom(bucket: \"my-bucket\")\n  |\u003e range(start: -24h)\n  |\u003e filter(fn: (r) =\u003e r._measurement == \"temperature\")\n  |\u003e mean()\n  |\u003e to(bucket: \"daily-averages\")\n\"\"\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing InfluxDB = KomminarLabs.InfluxDB;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleCron = new InfluxDB.Task(\"example_cron\", new()\n    {\n        OrgId = orgId,\n        Flux = @\"option task = {\n  name: \"\"Daily Processing Task\"\",\n  cron: \"\"0 0 * * *\"\",        # Run daily at midnight\n  offset: 30s,              # Delay execution by 30 seconds\n}\n    \nfrom(bucket: \"\"my-bucket\"\")\n  |\u003e range(start: -24h)\n  |\u003e filter(fn: (r) =\u003e r._measurement == \"\"temperature\"\")\n  |\u003e mean()\n  |\u003e to(bucket: \"\"daily-averages\"\")\n\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/komminarlabs/pulumi-influxdb/sdk/go/influxdb\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := influxdb.NewTask(ctx, \"example_cron\", \u0026influxdb.TaskArgs{\n\t\t\tOrgId: pulumi.Any(orgId),\n\t\t\tFlux: pulumi.String(`option task = {\n  name: \"Daily Processing Task\",\n  cron: \"0 0 * * *\",        # Run daily at midnight\n  offset: 30s,              # Delay execution by 30 seconds\n}\n    \nfrom(bucket: \"my-bucket\")\n  |\u003e range(start: -24h)\n  |\u003e filter(fn: (r) =\u003e r._measurement == \"temperature\")\n  |\u003e mean()\n  |\u003e to(bucket: \"daily-averages\")\n`),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.influxdb.Task;\nimport com.pulumi.influxdb.TaskArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleCron = new Task(\"exampleCron\", TaskArgs.builder()\n            .orgId(orgId)\n            .flux(\"\"\"\noption task = {\n  name: \"Daily Processing Task\",\n  cron: \"0 0 * * *\",        # Run daily at midnight\n  offset: 30s,              # Delay execution by 30 seconds\n}\n    \nfrom(bucket: \"my-bucket\")\n  |\u003e range(start: -24h)\n  |\u003e filter(fn: (r) =\u003e r._measurement == \"temperature\")\n  |\u003e mean()\n  |\u003e to(bucket: \"daily-averages\")\n            \"\"\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleCron:\n    type: influxdb:Task\n    name: example_cron\n    properties:\n      orgId: ${orgId}\n      flux: \"option task = {\\n  name: \\\"Daily Processing Task\\\",\\n  cron: \\\"0 0 * * *\\\",        # Run daily at midnight\\n  offset: 30s,              # Delay execution by 30 seconds\\n}\\n    \\nfrom(bucket: \\\"my-bucket\\\")\\n  |\u003e range(start: -24h)\\n  |\u003e filter(fn: (r) =\u003e r._measurement == \\\"temperature\\\")\\n  |\u003e mean()\\n  |\u003e to(bucket: \\\"daily-averages\\\")\\n\"\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n**Example configuration with interval scheduling:**\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as influxdb from \"@komminarlabs/influxdb\";\n\nconst exampleInterval = new influxdb.Task(\"example_interval\", {\n    orgId: orgId,\n    flux: `option task = {\n  name: \"Hourly Processing Task\",\n  every: 1h,                # Run every hour\n  offset: 10m,              # Start 10 minutes into each hour\n}\n    \nfrom(bucket: \"my-bucket\")\n  |\u003e range(start: -1h)\n  |\u003e filter(fn: (r) =\u003e r._measurement == \"cpu\")\n  |\u003e mean()\n  |\u003e to(bucket: \"hourly-stats\")\n`,\n});\n```\n```python\nimport pulumi\nimport komminarlabs_influxdb as influxdb\n\nexample_interval = influxdb.Task(\"example_interval\",\n    org_id=org_id,\n    flux=\"\"\"option task = {\n  name: \"Hourly Processing Task\",\n  every: 1h,                # Run every hour\n  offset: 10m,              # Start 10 minutes into each hour\n}\n    \nfrom(bucket: \"my-bucket\")\n  |\u003e range(start: -1h)\n  |\u003e filter(fn: (r) =\u003e r._measurement == \"cpu\")\n  |\u003e mean()\n  |\u003e to(bucket: \"hourly-stats\")\n\"\"\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing InfluxDB = KomminarLabs.InfluxDB;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleInterval = new InfluxDB.Task(\"example_interval\", new()\n    {\n        OrgId = orgId,\n        Flux = @\"option task = {\n  name: \"\"Hourly Processing Task\"\",\n  every: 1h,                # Run every hour\n  offset: 10m,              # Start 10 minutes into each hour\n}\n    \nfrom(bucket: \"\"my-bucket\"\")\n  |\u003e range(start: -1h)\n  |\u003e filter(fn: (r) =\u003e r._measurement == \"\"cpu\"\")\n  |\u003e mean()\n  |\u003e to(bucket: \"\"hourly-stats\"\")\n\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/komminarlabs/pulumi-influxdb/sdk/go/influxdb\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := influxdb.NewTask(ctx, \"example_interval\", \u0026influxdb.TaskArgs{\n\t\t\tOrgId: pulumi.Any(orgId),\n\t\t\tFlux: pulumi.String(`option task = {\n  name: \"Hourly Processing Task\",\n  every: 1h,                # Run every hour\n  offset: 10m,              # Start 10 minutes into each hour\n}\n    \nfrom(bucket: \"my-bucket\")\n  |\u003e range(start: -1h)\n  |\u003e filter(fn: (r) =\u003e r._measurement == \"cpu\")\n  |\u003e mean()\n  |\u003e to(bucket: \"hourly-stats\")\n`),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.influxdb.Task;\nimport com.pulumi.influxdb.TaskArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleInterval = new Task(\"exampleInterval\", TaskArgs.builder()\n            .orgId(orgId)\n            .flux(\"\"\"\noption task = {\n  name: \"Hourly Processing Task\",\n  every: 1h,                # Run every hour\n  offset: 10m,              # Start 10 minutes into each hour\n}\n    \nfrom(bucket: \"my-bucket\")\n  |\u003e range(start: -1h)\n  |\u003e filter(fn: (r) =\u003e r._measurement == \"cpu\")\n  |\u003e mean()\n  |\u003e to(bucket: \"hourly-stats\")\n            \"\"\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleInterval:\n    type: influxdb:Task\n    name: example_interval\n    properties:\n      orgId: ${orgId}\n      flux: \"option task = {\\n  name: \\\"Hourly Processing Task\\\",\\n  every: 1h,                # Run every hour\\n  offset: 10m,              # Start 10 minutes into each hour\\n}\\n    \\nfrom(bucket: \\\"my-bucket\\\")\\n  |\u003e range(start: -1h)\\n  |\u003e filter(fn: (r) =\u003e r._measurement == \\\"cpu\\\")\\n  |\u003e mean()\\n  |\u003e to(bucket: \\\"hourly-stats\\\")\\n\"\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "authorizationId": {
+                    "type": "string",
+                    "description": "The authorization ID. Specifies the authorization used when the task communicates with the query engine.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The timestamp when the task was created.\n"
+                },
+                "cron": {
+                    "type": "string",
+                    "description": "The Cron expression that defines the schedule on which the task runs.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the task.\n"
+                },
+                "every": {
+                    "type": "string",
+                    "description": "The interval [duration literal](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) at which the task runs. every also determines when the task first runs, depending on the specified time.\n"
+                },
+                "flux": {
+                    "type": "string",
+                    "description": "The [Flux script](https://docs.influxdata.com/influxdb/v2/process-data/get-started/#components-of-a-task) that the task executes.\n"
+                },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/influxdb:index/TaskLabel:TaskLabel"
+                    },
+                    "description": "The labels associated with the task.\n"
+                },
+                "lastRunError": {
+                    "type": "string",
+                    "description": "The error message from the last task run, if any.\n"
+                },
+                "lastRunStatus": {
+                    "type": "string",
+                    "description": "The status of the last task run.\n"
+                },
+                "latestCompleted": {
+                    "type": "string",
+                    "description": "A timestamp [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) of the latest scheduled and completed run.\n"
+                },
+                "links": {
+                    "$ref": "#/types/influxdb:index/TaskLinks:TaskLinks",
+                    "description": "Links related to the task.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the task.\n"
+                },
+                "offset": {
+                    "type": "string",
+                    "description": "The duration to delay execution of the task after the scheduled time has elapsed. 0 removes the offset.\n"
+                },
+                "org": {
+                    "type": "string",
+                    "description": "The organization name. Specifies the organization that owns the task.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID. Specifies the organization that owns the task.\n"
+                },
+                "ownerId": {
+                    "type": "string",
+                    "description": "The user ID. Specifies the owner of the task.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the task (`active` or `inactive`).\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The timestamp when the task was last updated.\n"
+                }
+            },
+            "required": [
+                "authorizationId",
+                "createdAt",
+                "cron",
+                "description",
+                "every",
+                "flux",
+                "labels",
+                "lastRunError",
+                "lastRunStatus",
+                "latestCompleted",
+                "links",
+                "name",
+                "offset",
+                "org",
+                "orgId",
+                "ownerId",
+                "status",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "flux": {
+                    "type": "string",
+                    "description": "The [Flux script](https://docs.influxdata.com/influxdb/v2/process-data/get-started/#components-of-a-task) that the task executes.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID. Specifies the organization that owns the task.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the task (`active` or `inactive`).\n"
+                }
+            },
+            "requiredInputs": [
+                "flux",
+                "orgId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Task resources.\n",
+                "properties": {
+                    "authorizationId": {
+                        "type": "string",
+                        "description": "The authorization ID. Specifies the authorization used when the task communicates with the query engine.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The timestamp when the task was created.\n"
+                    },
+                    "cron": {
+                        "type": "string",
+                        "description": "The Cron expression that defines the schedule on which the task runs.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the task.\n"
+                    },
+                    "every": {
+                        "type": "string",
+                        "description": "The interval [duration literal](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) at which the task runs. every also determines when the task first runs, depending on the specified time.\n"
+                    },
+                    "flux": {
+                        "type": "string",
+                        "description": "The [Flux script](https://docs.influxdata.com/influxdb/v2/process-data/get-started/#components-of-a-task) that the task executes.\n"
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/influxdb:index/TaskLabel:TaskLabel"
+                        },
+                        "description": "The labels associated with the task.\n"
+                    },
+                    "lastRunError": {
+                        "type": "string",
+                        "description": "The error message from the last task run, if any.\n"
+                    },
+                    "lastRunStatus": {
+                        "type": "string",
+                        "description": "The status of the last task run.\n"
+                    },
+                    "latestCompleted": {
+                        "type": "string",
+                        "description": "A timestamp [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) of the latest scheduled and completed run.\n"
+                    },
+                    "links": {
+                        "$ref": "#/types/influxdb:index/TaskLinks:TaskLinks",
+                        "description": "Links related to the task.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the task.\n"
+                    },
+                    "offset": {
+                        "type": "string",
+                        "description": "The duration to delay execution of the task after the scheduled time has elapsed. 0 removes the offset.\n"
+                    },
+                    "org": {
+                        "type": "string",
+                        "description": "The organization name. Specifies the organization that owns the task.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "The organization ID. Specifies the organization that owns the task.\n"
+                    },
+                    "ownerId": {
+                        "type": "string",
+                        "description": "The user ID. Specifies the owner of the task.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the task (`active` or `inactive`).\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The timestamp when the task was last updated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "influxdb:index/user:User": {
+            "description": "Creates and manages a user with optional organization membership. Supports adding users as members or owners of organizations.\n\n**Note:** InfluxDB Cloud doesn't let you manage user passwords through the API. Use the InfluxDB Cloud user interface (UI) to update your password.\n",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The user name.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID to add the user to. Required when `org_role` is specified.\n"
+                },
+                "orgRole": {
+                    "type": "string",
+                    "description": "The role of the user in the organization (`member` or `owner`).\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to set for the user.\n",
+                    "secret": true
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of a user. Default: `active`\n"
+                }
+            },
+            "required": [
+                "name",
+                "password",
+                "status"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The user name.\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "The organization ID to add the user to. Required when `org_role` is specified.\n"
+                },
+                "orgRole": {
+                    "type": "string",
+                    "description": "The role of the user in the organization (`member` or `owner`).\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to set for the user.\n",
+                    "secret": true
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of a user. Default: `active`\n"
+                }
+            },
+            "requiredInputs": [
+                "password"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering User resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The user name.\n"
+                    },
+                    "orgId": {
+                        "type": "string",
+                        "description": "The organization ID to add the user to. Required when `org_role` is specified.\n"
+                    },
+                    "orgRole": {
+                        "type": "string",
+                        "description": "The role of the user in the organization (`member` or `owner`).\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password to set for the user.\n",
+                        "secret": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of a user. Default: `active`\n"
                     }
                 },
                 "type": "object"
@@ -955,6 +1720,76 @@
                 "type": "object"
             }
         },
+        "influxdb:index/getLabel:getLabel": {
+            "description": "Retrieves a label with label ID.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getLabel.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The label ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getLabel.\n",
+                "properties": {
+                    "id": {
+                        "description": "The label ID.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The label name.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "The organization ID.\n",
+                        "type": "string"
+                    },
+                    "properties": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "The key-value pairs associated with this label.\n",
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "orgId",
+                    "properties"
+                ],
+                "type": "object"
+            }
+        },
+        "influxdb:index/getLabels:getLabels": {
+            "description": "List all labels.\n",
+            "outputs": {
+                "description": "A collection of values returned by getLabels.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "labels": {
+                        "items": {
+                            "$ref": "#/types/influxdb:index/getLabelsLabel:getLabelsLabel"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "labels",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "influxdb:index/getOrganization:getOrganization": {
             "description": "Retrieves an organization. Use this data source to retrieve information for a specific organization.\n",
             "inputs": {
@@ -1022,6 +1857,229 @@
                 },
                 "required": [
                     "organizations",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "influxdb:index/getTask:getTask": {
+            "description": "List all task.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTask.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The task ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTask.\n",
+                "properties": {
+                    "authorizationId": {
+                        "description": "The authorization ID. Specifies the authorization used when the task communicates with the query engine.\n",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "The timestamp when the task was created.\n",
+                        "type": "string"
+                    },
+                    "cron": {
+                        "description": "The Cron expression that defines the schedule on which the task runs. InfluxDB uses the system time when evaluating Cron expressions.\n",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The description of the task.\n",
+                        "type": "string"
+                    },
+                    "every": {
+                        "description": "The interval [duration literal](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) at which the task runs. every also determines when the task first runs, depending on the specified time.\n",
+                        "type": "string"
+                    },
+                    "flux": {
+                        "description": "The Flux script that the task executes.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The task ID.\n",
+                        "type": "string"
+                    },
+                    "labels": {
+                        "description": "The labels associated with the task.\n",
+                        "items": {
+                            "$ref": "#/types/influxdb:index/getTaskLabel:getTaskLabel"
+                        },
+                        "type": "array"
+                    },
+                    "lastRunError": {
+                        "description": "The error message from the last task run, if any.\n",
+                        "type": "string"
+                    },
+                    "lastRunStatus": {
+                        "description": "The status of the last task run.\n",
+                        "type": "string"
+                    },
+                    "latestCompleted": {
+                        "description": "A timestamp [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) of the latest scheduled and completed run.\n",
+                        "type": "string"
+                    },
+                    "links": {
+                        "$ref": "#/types/influxdb:index/getTaskLinks:getTaskLinks",
+                        "description": "Links related to the task.\n"
+                    },
+                    "name": {
+                        "description": "The name of the task.\n",
+                        "type": "string"
+                    },
+                    "offset": {
+                        "description": "The duration to delay execution of the task after the scheduled time has elapsed. 0 removes the offset.\n",
+                        "type": "string"
+                    },
+                    "org": {
+                        "description": "The organization name. Specifies the organization that owns the task.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "The organization ID. Specifies the organization that owns the task.\n",
+                        "type": "string"
+                    },
+                    "ownerId": {
+                        "description": "The user ID. Specifies the owner of the task.\n",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The status of the task (`active` or `inactive`).\n",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "The timestamp when the task was last updated.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "authorizationId",
+                    "createdAt",
+                    "cron",
+                    "description",
+                    "every",
+                    "flux",
+                    "id",
+                    "labels",
+                    "lastRunError",
+                    "lastRunStatus",
+                    "latestCompleted",
+                    "links",
+                    "name",
+                    "offset",
+                    "org",
+                    "orgId",
+                    "ownerId",
+                    "status",
+                    "updatedAt"
+                ],
+                "type": "object"
+            }
+        },
+        "influxdb:index/getTasks:getTasks": {
+            "description": "List all tasks.\n",
+            "outputs": {
+                "description": "A collection of values returned by getTasks.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "tasks": {
+                        "items": {
+                            "$ref": "#/types/influxdb:index/getTasksTask:getTasksTask"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "tasks",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "influxdb:index/getUser:getUser": {
+            "description": "Retrieves a user.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getUser.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The user ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUser.\n",
+                "properties": {
+                    "id": {
+                        "description": "The user ID.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The user name.\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "description": "The organization ID that the user belongs to. Null if the user is not a member of any organization.\n",
+                        "type": "string"
+                    },
+                    "orgRole": {
+                        "description": "The role of the user in the organization (`member` or `owner`). Null if the user is not a member of any organization.\n",
+                        "type": "string"
+                    },
+                    "password": {
+                        "description": "The password of the user. This will be always `null`.\n",
+                        "secret": true,
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The status of a user.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "orgId",
+                    "orgRole",
+                    "password",
+                    "status"
+                ],
+                "type": "object"
+            }
+        },
+        "influxdb:index/getUsers:getUsers": {
+            "description": "List all users.\n",
+            "outputs": {
+                "description": "A collection of values returned by getUsers.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "users": {
+                        "items": {
+                            "$ref": "#/types/influxdb:index/getUsersUser:getUsersUser"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "users",
                     "id"
                 ],
                 "type": "object"

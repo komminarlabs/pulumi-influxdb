@@ -20,6 +20,10 @@ __all__ = [
     'AuthorizationPermissionArgsDict',
     'AuthorizationPermissionResourceArgs',
     'AuthorizationPermissionResourceArgsDict',
+    'TaskLabelArgs',
+    'TaskLabelArgsDict',
+    'TaskLinksArgs',
+    'TaskLinksArgsDict',
 ]
 
 MYPY = False
@@ -176,5 +180,229 @@ class AuthorizationPermissionResourceArgs:
     @org_id.setter
     def org_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "org_id", value)
+
+
+if not MYPY:
+    class TaskLabelArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The label ID.
+        """
+        name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The label name.
+        """
+        org_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The organization ID.
+        """
+        properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
+        """
+        The key-value pairs associated with this label.
+        """
+elif False:
+    TaskLabelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TaskLabelArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[builtins.str]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 org_id: Optional[pulumi.Input[builtins.str]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None):
+        """
+        :param pulumi.Input[builtins.str] id: The label ID.
+        :param pulumi.Input[builtins.str] name: The label name.
+        :param pulumi.Input[builtins.str] org_id: The organization ID.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] properties: The key-value pairs associated with this label.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The label ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The label name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The organization ID.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
+        """
+        The key-value pairs associated with this label.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "properties", value)
+
+
+if not MYPY:
+    class TaskLinksArgsDict(TypedDict):
+        labels: NotRequired[pulumi.Input[builtins.str]]
+        """
+        URI of resource.
+        """
+        logs: NotRequired[pulumi.Input[builtins.str]]
+        """
+        URI of resource.
+        """
+        members: NotRequired[pulumi.Input[builtins.str]]
+        """
+        URI of resource.
+        """
+        owners: NotRequired[pulumi.Input[builtins.str]]
+        """
+        URI of resource.
+        """
+        runs: NotRequired[pulumi.Input[builtins.str]]
+        """
+        URI of resource.
+        """
+        self: NotRequired[pulumi.Input[builtins.str]]
+        """
+        URI of resource.
+        """
+elif False:
+    TaskLinksArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TaskLinksArgs:
+    def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[builtins.str]] = None,
+                 logs: Optional[pulumi.Input[builtins.str]] = None,
+                 members: Optional[pulumi.Input[builtins.str]] = None,
+                 owners: Optional[pulumi.Input[builtins.str]] = None,
+                 runs: Optional[pulumi.Input[builtins.str]] = None,
+                 self: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] labels: URI of resource.
+        :param pulumi.Input[builtins.str] logs: URI of resource.
+        :param pulumi.Input[builtins.str] members: URI of resource.
+        :param pulumi.Input[builtins.str] owners: URI of resource.
+        :param pulumi.Input[builtins.str] runs: URI of resource.
+        :param pulumi.Input[builtins.str] self: URI of resource.
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if owners is not None:
+            pulumi.set(__self__, "owners", owners)
+        if runs is not None:
+            pulumi.set(__self__, "runs", runs)
+        if self is not None:
+            pulumi.set(__self__, "self", self)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def logs(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "logs")
+
+    @logs.setter
+    def logs(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "logs", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def owners(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "owners")
+
+    @owners.setter
+    def owners(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "owners", value)
+
+    @property
+    @pulumi.getter
+    def runs(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "runs")
+
+    @runs.setter
+    def runs(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "runs", value)
+
+    @property
+    @pulumi.getter
+    def self(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        URI of resource.
+        """
+        return pulumi.get(self, "self")
+
+    @self.setter
+    def self(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "self", value)
 
 

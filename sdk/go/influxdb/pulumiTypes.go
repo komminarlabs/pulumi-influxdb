@@ -204,6 +204,362 @@ func (o AuthorizationPermissionResourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthorizationPermissionResource) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type TaskLabel struct {
+	// The label ID.
+	Id *string `pulumi:"id"`
+	// The label name.
+	Name *string `pulumi:"name"`
+	// The organization ID.
+	OrgId *string `pulumi:"orgId"`
+	// The key-value pairs associated with this label.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// TaskLabelInput is an input type that accepts TaskLabelArgs and TaskLabelOutput values.
+// You can construct a concrete instance of `TaskLabelInput` via:
+//
+//	TaskLabelArgs{...}
+type TaskLabelInput interface {
+	pulumi.Input
+
+	ToTaskLabelOutput() TaskLabelOutput
+	ToTaskLabelOutputWithContext(context.Context) TaskLabelOutput
+}
+
+type TaskLabelArgs struct {
+	// The label ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The label name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The organization ID.
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// The key-value pairs associated with this label.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (TaskLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskLabel)(nil)).Elem()
+}
+
+func (i TaskLabelArgs) ToTaskLabelOutput() TaskLabelOutput {
+	return i.ToTaskLabelOutputWithContext(context.Background())
+}
+
+func (i TaskLabelArgs) ToTaskLabelOutputWithContext(ctx context.Context) TaskLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskLabelOutput)
+}
+
+// TaskLabelArrayInput is an input type that accepts TaskLabelArray and TaskLabelArrayOutput values.
+// You can construct a concrete instance of `TaskLabelArrayInput` via:
+//
+//	TaskLabelArray{ TaskLabelArgs{...} }
+type TaskLabelArrayInput interface {
+	pulumi.Input
+
+	ToTaskLabelArrayOutput() TaskLabelArrayOutput
+	ToTaskLabelArrayOutputWithContext(context.Context) TaskLabelArrayOutput
+}
+
+type TaskLabelArray []TaskLabelInput
+
+func (TaskLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskLabel)(nil)).Elem()
+}
+
+func (i TaskLabelArray) ToTaskLabelArrayOutput() TaskLabelArrayOutput {
+	return i.ToTaskLabelArrayOutputWithContext(context.Background())
+}
+
+func (i TaskLabelArray) ToTaskLabelArrayOutputWithContext(ctx context.Context) TaskLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskLabelArrayOutput)
+}
+
+type TaskLabelOutput struct{ *pulumi.OutputState }
+
+func (TaskLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskLabel)(nil)).Elem()
+}
+
+func (o TaskLabelOutput) ToTaskLabelOutput() TaskLabelOutput {
+	return o
+}
+
+func (o TaskLabelOutput) ToTaskLabelOutputWithContext(ctx context.Context) TaskLabelOutput {
+	return o
+}
+
+// The label ID.
+func (o TaskLabelOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskLabel) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The label name.
+func (o TaskLabelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskLabel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The organization ID.
+func (o TaskLabelOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskLabel) *string { return v.OrgId }).(pulumi.StringPtrOutput)
+}
+
+// The key-value pairs associated with this label.
+func (o TaskLabelOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskLabel) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type TaskLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (TaskLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskLabel)(nil)).Elem()
+}
+
+func (o TaskLabelArrayOutput) ToTaskLabelArrayOutput() TaskLabelArrayOutput {
+	return o
+}
+
+func (o TaskLabelArrayOutput) ToTaskLabelArrayOutputWithContext(ctx context.Context) TaskLabelArrayOutput {
+	return o
+}
+
+func (o TaskLabelArrayOutput) Index(i pulumi.IntInput) TaskLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskLabel {
+		return vs[0].([]TaskLabel)[vs[1].(int)]
+	}).(TaskLabelOutput)
+}
+
+type TaskLinks struct {
+	// URI of resource.
+	Labels *string `pulumi:"labels"`
+	// URI of resource.
+	Logs *string `pulumi:"logs"`
+	// URI of resource.
+	Members *string `pulumi:"members"`
+	// URI of resource.
+	Owners *string `pulumi:"owners"`
+	// URI of resource.
+	Runs *string `pulumi:"runs"`
+	// URI of resource.
+	Self *string `pulumi:"self"`
+}
+
+// TaskLinksInput is an input type that accepts TaskLinksArgs and TaskLinksOutput values.
+// You can construct a concrete instance of `TaskLinksInput` via:
+//
+//	TaskLinksArgs{...}
+type TaskLinksInput interface {
+	pulumi.Input
+
+	ToTaskLinksOutput() TaskLinksOutput
+	ToTaskLinksOutputWithContext(context.Context) TaskLinksOutput
+}
+
+type TaskLinksArgs struct {
+	// URI of resource.
+	Labels pulumi.StringPtrInput `pulumi:"labels"`
+	// URI of resource.
+	Logs pulumi.StringPtrInput `pulumi:"logs"`
+	// URI of resource.
+	Members pulumi.StringPtrInput `pulumi:"members"`
+	// URI of resource.
+	Owners pulumi.StringPtrInput `pulumi:"owners"`
+	// URI of resource.
+	Runs pulumi.StringPtrInput `pulumi:"runs"`
+	// URI of resource.
+	Self pulumi.StringPtrInput `pulumi:"self"`
+}
+
+func (TaskLinksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskLinks)(nil)).Elem()
+}
+
+func (i TaskLinksArgs) ToTaskLinksOutput() TaskLinksOutput {
+	return i.ToTaskLinksOutputWithContext(context.Background())
+}
+
+func (i TaskLinksArgs) ToTaskLinksOutputWithContext(ctx context.Context) TaskLinksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskLinksOutput)
+}
+
+func (i TaskLinksArgs) ToTaskLinksPtrOutput() TaskLinksPtrOutput {
+	return i.ToTaskLinksPtrOutputWithContext(context.Background())
+}
+
+func (i TaskLinksArgs) ToTaskLinksPtrOutputWithContext(ctx context.Context) TaskLinksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskLinksOutput).ToTaskLinksPtrOutputWithContext(ctx)
+}
+
+// TaskLinksPtrInput is an input type that accepts TaskLinksArgs, TaskLinksPtr and TaskLinksPtrOutput values.
+// You can construct a concrete instance of `TaskLinksPtrInput` via:
+//
+//	        TaskLinksArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskLinksPtrInput interface {
+	pulumi.Input
+
+	ToTaskLinksPtrOutput() TaskLinksPtrOutput
+	ToTaskLinksPtrOutputWithContext(context.Context) TaskLinksPtrOutput
+}
+
+type taskLinksPtrType TaskLinksArgs
+
+func TaskLinksPtr(v *TaskLinksArgs) TaskLinksPtrInput {
+	return (*taskLinksPtrType)(v)
+}
+
+func (*taskLinksPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskLinks)(nil)).Elem()
+}
+
+func (i *taskLinksPtrType) ToTaskLinksPtrOutput() TaskLinksPtrOutput {
+	return i.ToTaskLinksPtrOutputWithContext(context.Background())
+}
+
+func (i *taskLinksPtrType) ToTaskLinksPtrOutputWithContext(ctx context.Context) TaskLinksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskLinksPtrOutput)
+}
+
+type TaskLinksOutput struct{ *pulumi.OutputState }
+
+func (TaskLinksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskLinks)(nil)).Elem()
+}
+
+func (o TaskLinksOutput) ToTaskLinksOutput() TaskLinksOutput {
+	return o
+}
+
+func (o TaskLinksOutput) ToTaskLinksOutputWithContext(ctx context.Context) TaskLinksOutput {
+	return o
+}
+
+func (o TaskLinksOutput) ToTaskLinksPtrOutput() TaskLinksPtrOutput {
+	return o.ToTaskLinksPtrOutputWithContext(context.Background())
+}
+
+func (o TaskLinksOutput) ToTaskLinksPtrOutputWithContext(ctx context.Context) TaskLinksPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskLinks) *TaskLinks {
+		return &v
+	}).(TaskLinksPtrOutput)
+}
+
+// URI of resource.
+func (o TaskLinksOutput) Labels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskLinks) *string { return v.Labels }).(pulumi.StringPtrOutput)
+}
+
+// URI of resource.
+func (o TaskLinksOutput) Logs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskLinks) *string { return v.Logs }).(pulumi.StringPtrOutput)
+}
+
+// URI of resource.
+func (o TaskLinksOutput) Members() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskLinks) *string { return v.Members }).(pulumi.StringPtrOutput)
+}
+
+// URI of resource.
+func (o TaskLinksOutput) Owners() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskLinks) *string { return v.Owners }).(pulumi.StringPtrOutput)
+}
+
+// URI of resource.
+func (o TaskLinksOutput) Runs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskLinks) *string { return v.Runs }).(pulumi.StringPtrOutput)
+}
+
+// URI of resource.
+func (o TaskLinksOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskLinks) *string { return v.Self }).(pulumi.StringPtrOutput)
+}
+
+type TaskLinksPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskLinksPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskLinks)(nil)).Elem()
+}
+
+func (o TaskLinksPtrOutput) ToTaskLinksPtrOutput() TaskLinksPtrOutput {
+	return o
+}
+
+func (o TaskLinksPtrOutput) ToTaskLinksPtrOutputWithContext(ctx context.Context) TaskLinksPtrOutput {
+	return o
+}
+
+func (o TaskLinksPtrOutput) Elem() TaskLinksOutput {
+	return o.ApplyT(func(v *TaskLinks) TaskLinks {
+		if v != nil {
+			return *v
+		}
+		var ret TaskLinks
+		return ret
+	}).(TaskLinksOutput)
+}
+
+// URI of resource.
+func (o TaskLinksPtrOutput) Labels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI of resource.
+func (o TaskLinksPtrOutput) Logs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Logs
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI of resource.
+func (o TaskLinksPtrOutput) Members() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Members
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI of resource.
+func (o TaskLinksPtrOutput) Owners() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Owners
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI of resource.
+func (o TaskLinksPtrOutput) Runs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Runs
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI of resource.
+func (o TaskLinksPtrOutput) Self() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskLinks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Self
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAuthorizationPermission struct {
 	// Permission action.
 	Action   string                             `pulumi:"action"`
@@ -937,6 +1293,130 @@ func (o GetBucketsBucketArrayOutput) Index(i pulumi.IntInput) GetBucketsBucketOu
 	}).(GetBucketsBucketOutput)
 }
 
+type GetLabelsLabel struct {
+	// The label ID.
+	Id string `pulumi:"id"`
+	// The label name.
+	Name string `pulumi:"name"`
+	// The organization ID.
+	OrgId string `pulumi:"orgId"`
+	// The key-value pairs associated with this label.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// GetLabelsLabelInput is an input type that accepts GetLabelsLabelArgs and GetLabelsLabelOutput values.
+// You can construct a concrete instance of `GetLabelsLabelInput` via:
+//
+//	GetLabelsLabelArgs{...}
+type GetLabelsLabelInput interface {
+	pulumi.Input
+
+	ToGetLabelsLabelOutput() GetLabelsLabelOutput
+	ToGetLabelsLabelOutputWithContext(context.Context) GetLabelsLabelOutput
+}
+
+type GetLabelsLabelArgs struct {
+	// The label ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The label name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The organization ID.
+	OrgId pulumi.StringInput `pulumi:"orgId"`
+	// The key-value pairs associated with this label.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (GetLabelsLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLabelsLabel)(nil)).Elem()
+}
+
+func (i GetLabelsLabelArgs) ToGetLabelsLabelOutput() GetLabelsLabelOutput {
+	return i.ToGetLabelsLabelOutputWithContext(context.Background())
+}
+
+func (i GetLabelsLabelArgs) ToGetLabelsLabelOutputWithContext(ctx context.Context) GetLabelsLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLabelsLabelOutput)
+}
+
+// GetLabelsLabelArrayInput is an input type that accepts GetLabelsLabelArray and GetLabelsLabelArrayOutput values.
+// You can construct a concrete instance of `GetLabelsLabelArrayInput` via:
+//
+//	GetLabelsLabelArray{ GetLabelsLabelArgs{...} }
+type GetLabelsLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetLabelsLabelArrayOutput() GetLabelsLabelArrayOutput
+	ToGetLabelsLabelArrayOutputWithContext(context.Context) GetLabelsLabelArrayOutput
+}
+
+type GetLabelsLabelArray []GetLabelsLabelInput
+
+func (GetLabelsLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLabelsLabel)(nil)).Elem()
+}
+
+func (i GetLabelsLabelArray) ToGetLabelsLabelArrayOutput() GetLabelsLabelArrayOutput {
+	return i.ToGetLabelsLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetLabelsLabelArray) ToGetLabelsLabelArrayOutputWithContext(ctx context.Context) GetLabelsLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLabelsLabelArrayOutput)
+}
+
+type GetLabelsLabelOutput struct{ *pulumi.OutputState }
+
+func (GetLabelsLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLabelsLabel)(nil)).Elem()
+}
+
+func (o GetLabelsLabelOutput) ToGetLabelsLabelOutput() GetLabelsLabelOutput {
+	return o
+}
+
+func (o GetLabelsLabelOutput) ToGetLabelsLabelOutputWithContext(ctx context.Context) GetLabelsLabelOutput {
+	return o
+}
+
+// The label ID.
+func (o GetLabelsLabelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLabelsLabel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The label name.
+func (o GetLabelsLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLabelsLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The organization ID.
+func (o GetLabelsLabelOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLabelsLabel) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// The key-value pairs associated with this label.
+func (o GetLabelsLabelOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLabelsLabel) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type GetLabelsLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLabelsLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLabelsLabel)(nil)).Elem()
+}
+
+func (o GetLabelsLabelArrayOutput) ToGetLabelsLabelArrayOutput() GetLabelsLabelArrayOutput {
+	return o
+}
+
+func (o GetLabelsLabelArrayOutput) ToGetLabelsLabelArrayOutputWithContext(ctx context.Context) GetLabelsLabelArrayOutput {
+	return o
+}
+
+func (o GetLabelsLabelArrayOutput) Index(i pulumi.IntInput) GetLabelsLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLabelsLabel {
+		return vs[0].([]GetLabelsLabel)[vs[1].(int)]
+	}).(GetLabelsLabelOutput)
+}
+
 type GetOrganizationsOrganization struct {
 	// Organization creation date.
 	CreatedAt string `pulumi:"createdAt"`
@@ -1070,10 +1550,857 @@ func (o GetOrganizationsOrganizationArrayOutput) Index(i pulumi.IntInput) GetOrg
 	}).(GetOrganizationsOrganizationOutput)
 }
 
+type GetTaskLabel struct {
+	// The label ID.
+	Id string `pulumi:"id"`
+	// The label name.
+	Name string `pulumi:"name"`
+	// The organization ID.
+	OrgId string `pulumi:"orgId"`
+	// The key-value pairs associated with this label.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// GetTaskLabelInput is an input type that accepts GetTaskLabelArgs and GetTaskLabelOutput values.
+// You can construct a concrete instance of `GetTaskLabelInput` via:
+//
+//	GetTaskLabelArgs{...}
+type GetTaskLabelInput interface {
+	pulumi.Input
+
+	ToGetTaskLabelOutput() GetTaskLabelOutput
+	ToGetTaskLabelOutputWithContext(context.Context) GetTaskLabelOutput
+}
+
+type GetTaskLabelArgs struct {
+	// The label ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The label name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The organization ID.
+	OrgId pulumi.StringInput `pulumi:"orgId"`
+	// The key-value pairs associated with this label.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (GetTaskLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTaskLabel)(nil)).Elem()
+}
+
+func (i GetTaskLabelArgs) ToGetTaskLabelOutput() GetTaskLabelOutput {
+	return i.ToGetTaskLabelOutputWithContext(context.Background())
+}
+
+func (i GetTaskLabelArgs) ToGetTaskLabelOutputWithContext(ctx context.Context) GetTaskLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTaskLabelOutput)
+}
+
+// GetTaskLabelArrayInput is an input type that accepts GetTaskLabelArray and GetTaskLabelArrayOutput values.
+// You can construct a concrete instance of `GetTaskLabelArrayInput` via:
+//
+//	GetTaskLabelArray{ GetTaskLabelArgs{...} }
+type GetTaskLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetTaskLabelArrayOutput() GetTaskLabelArrayOutput
+	ToGetTaskLabelArrayOutputWithContext(context.Context) GetTaskLabelArrayOutput
+}
+
+type GetTaskLabelArray []GetTaskLabelInput
+
+func (GetTaskLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTaskLabel)(nil)).Elem()
+}
+
+func (i GetTaskLabelArray) ToGetTaskLabelArrayOutput() GetTaskLabelArrayOutput {
+	return i.ToGetTaskLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetTaskLabelArray) ToGetTaskLabelArrayOutputWithContext(ctx context.Context) GetTaskLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTaskLabelArrayOutput)
+}
+
+type GetTaskLabelOutput struct{ *pulumi.OutputState }
+
+func (GetTaskLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTaskLabel)(nil)).Elem()
+}
+
+func (o GetTaskLabelOutput) ToGetTaskLabelOutput() GetTaskLabelOutput {
+	return o
+}
+
+func (o GetTaskLabelOutput) ToGetTaskLabelOutputWithContext(ctx context.Context) GetTaskLabelOutput {
+	return o
+}
+
+// The label ID.
+func (o GetTaskLabelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTaskLabel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The label name.
+func (o GetTaskLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTaskLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The organization ID.
+func (o GetTaskLabelOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTaskLabel) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// The key-value pairs associated with this label.
+func (o GetTaskLabelOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTaskLabel) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type GetTaskLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTaskLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTaskLabel)(nil)).Elem()
+}
+
+func (o GetTaskLabelArrayOutput) ToGetTaskLabelArrayOutput() GetTaskLabelArrayOutput {
+	return o
+}
+
+func (o GetTaskLabelArrayOutput) ToGetTaskLabelArrayOutputWithContext(ctx context.Context) GetTaskLabelArrayOutput {
+	return o
+}
+
+func (o GetTaskLabelArrayOutput) Index(i pulumi.IntInput) GetTaskLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTaskLabel {
+		return vs[0].([]GetTaskLabel)[vs[1].(int)]
+	}).(GetTaskLabelOutput)
+}
+
+type GetTaskLinks struct {
+	// URI of resource.
+	Labels string `pulumi:"labels"`
+	// URI of resource.
+	Logs string `pulumi:"logs"`
+	// URI of resource.
+	Members string `pulumi:"members"`
+	// URI of resource.
+	Owners string `pulumi:"owners"`
+	// URI of resource.
+	Runs string `pulumi:"runs"`
+	// URI of resource.
+	Self string `pulumi:"self"`
+}
+
+// GetTaskLinksInput is an input type that accepts GetTaskLinksArgs and GetTaskLinksOutput values.
+// You can construct a concrete instance of `GetTaskLinksInput` via:
+//
+//	GetTaskLinksArgs{...}
+type GetTaskLinksInput interface {
+	pulumi.Input
+
+	ToGetTaskLinksOutput() GetTaskLinksOutput
+	ToGetTaskLinksOutputWithContext(context.Context) GetTaskLinksOutput
+}
+
+type GetTaskLinksArgs struct {
+	// URI of resource.
+	Labels pulumi.StringInput `pulumi:"labels"`
+	// URI of resource.
+	Logs pulumi.StringInput `pulumi:"logs"`
+	// URI of resource.
+	Members pulumi.StringInput `pulumi:"members"`
+	// URI of resource.
+	Owners pulumi.StringInput `pulumi:"owners"`
+	// URI of resource.
+	Runs pulumi.StringInput `pulumi:"runs"`
+	// URI of resource.
+	Self pulumi.StringInput `pulumi:"self"`
+}
+
+func (GetTaskLinksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTaskLinks)(nil)).Elem()
+}
+
+func (i GetTaskLinksArgs) ToGetTaskLinksOutput() GetTaskLinksOutput {
+	return i.ToGetTaskLinksOutputWithContext(context.Background())
+}
+
+func (i GetTaskLinksArgs) ToGetTaskLinksOutputWithContext(ctx context.Context) GetTaskLinksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTaskLinksOutput)
+}
+
+type GetTaskLinksOutput struct{ *pulumi.OutputState }
+
+func (GetTaskLinksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTaskLinks)(nil)).Elem()
+}
+
+func (o GetTaskLinksOutput) ToGetTaskLinksOutput() GetTaskLinksOutput {
+	return o
+}
+
+func (o GetTaskLinksOutput) ToGetTaskLinksOutputWithContext(ctx context.Context) GetTaskLinksOutput {
+	return o
+}
+
+// URI of resource.
+func (o GetTaskLinksOutput) Labels() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTaskLinks) string { return v.Labels }).(pulumi.StringOutput)
+}
+
+// URI of resource.
+func (o GetTaskLinksOutput) Logs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTaskLinks) string { return v.Logs }).(pulumi.StringOutput)
+}
+
+// URI of resource.
+func (o GetTaskLinksOutput) Members() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTaskLinks) string { return v.Members }).(pulumi.StringOutput)
+}
+
+// URI of resource.
+func (o GetTaskLinksOutput) Owners() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTaskLinks) string { return v.Owners }).(pulumi.StringOutput)
+}
+
+// URI of resource.
+func (o GetTaskLinksOutput) Runs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTaskLinks) string { return v.Runs }).(pulumi.StringOutput)
+}
+
+// URI of resource.
+func (o GetTaskLinksOutput) Self() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTaskLinks) string { return v.Self }).(pulumi.StringOutput)
+}
+
+type GetTasksTask struct {
+	// The authorization ID. Specifies the authorization used when the task communicates with the query engine.
+	AuthorizationId string `pulumi:"authorizationId"`
+	// The timestamp when the task was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The Cron expression that defines the schedule on which the task runs. InfluxDB uses the system time when evaluating Cron expressions.
+	Cron string `pulumi:"cron"`
+	// The description of the task.
+	Description string `pulumi:"description"`
+	// The interval [duration literal](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) at which the task runs. every also determines when the task first runs, depending on the specified time.
+	Every string `pulumi:"every"`
+	// The Flux script that the task executes.
+	Flux string `pulumi:"flux"`
+	// The task ID.
+	Id string `pulumi:"id"`
+	// The labels associated with the task.
+	Labels []GetTasksTaskLabel `pulumi:"labels"`
+	// The error message from the last task run, if any.
+	LastRunError string `pulumi:"lastRunError"`
+	// The status of the last task run.
+	LastRunStatus string `pulumi:"lastRunStatus"`
+	// A timestamp [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) of the latest scheduled and completed run.
+	LatestCompleted string `pulumi:"latestCompleted"`
+	// Links related to the task.
+	Links GetTasksTaskLinks `pulumi:"links"`
+	// The name of the task.
+	Name string `pulumi:"name"`
+	// The duration to delay execution of the task after the scheduled time has elapsed. 0 removes the offset.
+	Offset string `pulumi:"offset"`
+	// The organization name. Specifies the organization that owns the task.
+	Org string `pulumi:"org"`
+	// The organization ID. Specifies the organization that owns the task.
+	OrgId string `pulumi:"orgId"`
+	// The user ID. Specifies the owner of the task.
+	OwnerId string `pulumi:"ownerId"`
+	// The status of the task (`active` or `inactive`).
+	Status string `pulumi:"status"`
+	// The timestamp when the task was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetTasksTaskInput is an input type that accepts GetTasksTaskArgs and GetTasksTaskOutput values.
+// You can construct a concrete instance of `GetTasksTaskInput` via:
+//
+//	GetTasksTaskArgs{...}
+type GetTasksTaskInput interface {
+	pulumi.Input
+
+	ToGetTasksTaskOutput() GetTasksTaskOutput
+	ToGetTasksTaskOutputWithContext(context.Context) GetTasksTaskOutput
+}
+
+type GetTasksTaskArgs struct {
+	// The authorization ID. Specifies the authorization used when the task communicates with the query engine.
+	AuthorizationId pulumi.StringInput `pulumi:"authorizationId"`
+	// The timestamp when the task was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The Cron expression that defines the schedule on which the task runs. InfluxDB uses the system time when evaluating Cron expressions.
+	Cron pulumi.StringInput `pulumi:"cron"`
+	// The description of the task.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The interval [duration literal](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) at which the task runs. every also determines when the task first runs, depending on the specified time.
+	Every pulumi.StringInput `pulumi:"every"`
+	// The Flux script that the task executes.
+	Flux pulumi.StringInput `pulumi:"flux"`
+	// The task ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The labels associated with the task.
+	Labels GetTasksTaskLabelArrayInput `pulumi:"labels"`
+	// The error message from the last task run, if any.
+	LastRunError pulumi.StringInput `pulumi:"lastRunError"`
+	// The status of the last task run.
+	LastRunStatus pulumi.StringInput `pulumi:"lastRunStatus"`
+	// A timestamp [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) of the latest scheduled and completed run.
+	LatestCompleted pulumi.StringInput `pulumi:"latestCompleted"`
+	// Links related to the task.
+	Links GetTasksTaskLinksInput `pulumi:"links"`
+	// The name of the task.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The duration to delay execution of the task after the scheduled time has elapsed. 0 removes the offset.
+	Offset pulumi.StringInput `pulumi:"offset"`
+	// The organization name. Specifies the organization that owns the task.
+	Org pulumi.StringInput `pulumi:"org"`
+	// The organization ID. Specifies the organization that owns the task.
+	OrgId pulumi.StringInput `pulumi:"orgId"`
+	// The user ID. Specifies the owner of the task.
+	OwnerId pulumi.StringInput `pulumi:"ownerId"`
+	// The status of the task (`active` or `inactive`).
+	Status pulumi.StringInput `pulumi:"status"`
+	// The timestamp when the task was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetTasksTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTasksTask)(nil)).Elem()
+}
+
+func (i GetTasksTaskArgs) ToGetTasksTaskOutput() GetTasksTaskOutput {
+	return i.ToGetTasksTaskOutputWithContext(context.Background())
+}
+
+func (i GetTasksTaskArgs) ToGetTasksTaskOutputWithContext(ctx context.Context) GetTasksTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTasksTaskOutput)
+}
+
+// GetTasksTaskArrayInput is an input type that accepts GetTasksTaskArray and GetTasksTaskArrayOutput values.
+// You can construct a concrete instance of `GetTasksTaskArrayInput` via:
+//
+//	GetTasksTaskArray{ GetTasksTaskArgs{...} }
+type GetTasksTaskArrayInput interface {
+	pulumi.Input
+
+	ToGetTasksTaskArrayOutput() GetTasksTaskArrayOutput
+	ToGetTasksTaskArrayOutputWithContext(context.Context) GetTasksTaskArrayOutput
+}
+
+type GetTasksTaskArray []GetTasksTaskInput
+
+func (GetTasksTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTasksTask)(nil)).Elem()
+}
+
+func (i GetTasksTaskArray) ToGetTasksTaskArrayOutput() GetTasksTaskArrayOutput {
+	return i.ToGetTasksTaskArrayOutputWithContext(context.Background())
+}
+
+func (i GetTasksTaskArray) ToGetTasksTaskArrayOutputWithContext(ctx context.Context) GetTasksTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTasksTaskArrayOutput)
+}
+
+type GetTasksTaskOutput struct{ *pulumi.OutputState }
+
+func (GetTasksTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTasksTask)(nil)).Elem()
+}
+
+func (o GetTasksTaskOutput) ToGetTasksTaskOutput() GetTasksTaskOutput {
+	return o
+}
+
+func (o GetTasksTaskOutput) ToGetTasksTaskOutputWithContext(ctx context.Context) GetTasksTaskOutput {
+	return o
+}
+
+// The authorization ID. Specifies the authorization used when the task communicates with the query engine.
+func (o GetTasksTaskOutput) AuthorizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.AuthorizationId }).(pulumi.StringOutput)
+}
+
+// The timestamp when the task was created.
+func (o GetTasksTaskOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The Cron expression that defines the schedule on which the task runs. InfluxDB uses the system time when evaluating Cron expressions.
+func (o GetTasksTaskOutput) Cron() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.Cron }).(pulumi.StringOutput)
+}
+
+// The description of the task.
+func (o GetTasksTaskOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The interval [duration literal](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) at which the task runs. every also determines when the task first runs, depending on the specified time.
+func (o GetTasksTaskOutput) Every() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.Every }).(pulumi.StringOutput)
+}
+
+// The Flux script that the task executes.
+func (o GetTasksTaskOutput) Flux() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.Flux }).(pulumi.StringOutput)
+}
+
+// The task ID.
+func (o GetTasksTaskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The labels associated with the task.
+func (o GetTasksTaskOutput) Labels() GetTasksTaskLabelArrayOutput {
+	return o.ApplyT(func(v GetTasksTask) []GetTasksTaskLabel { return v.Labels }).(GetTasksTaskLabelArrayOutput)
+}
+
+// The error message from the last task run, if any.
+func (o GetTasksTaskOutput) LastRunError() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.LastRunError }).(pulumi.StringOutput)
+}
+
+// The status of the last task run.
+func (o GetTasksTaskOutput) LastRunStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.LastRunStatus }).(pulumi.StringOutput)
+}
+
+// A timestamp [RFC3339 date/time format](https://docs.influxdata.com/influxdb/v2/reference/glossary/#rfc3339-timestamp) of the latest scheduled and completed run.
+func (o GetTasksTaskOutput) LatestCompleted() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.LatestCompleted }).(pulumi.StringOutput)
+}
+
+// Links related to the task.
+func (o GetTasksTaskOutput) Links() GetTasksTaskLinksOutput {
+	return o.ApplyT(func(v GetTasksTask) GetTasksTaskLinks { return v.Links }).(GetTasksTaskLinksOutput)
+}
+
+// The name of the task.
+func (o GetTasksTaskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The duration to delay execution of the task after the scheduled time has elapsed. 0 removes the offset.
+func (o GetTasksTaskOutput) Offset() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.Offset }).(pulumi.StringOutput)
+}
+
+// The organization name. Specifies the organization that owns the task.
+func (o GetTasksTaskOutput) Org() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.Org }).(pulumi.StringOutput)
+}
+
+// The organization ID. Specifies the organization that owns the task.
+func (o GetTasksTaskOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// The user ID. Specifies the owner of the task.
+func (o GetTasksTaskOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// The status of the task (`active` or `inactive`).
+func (o GetTasksTaskOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The timestamp when the task was last updated.
+func (o GetTasksTaskOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTask) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetTasksTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTasksTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTasksTask)(nil)).Elem()
+}
+
+func (o GetTasksTaskArrayOutput) ToGetTasksTaskArrayOutput() GetTasksTaskArrayOutput {
+	return o
+}
+
+func (o GetTasksTaskArrayOutput) ToGetTasksTaskArrayOutputWithContext(ctx context.Context) GetTasksTaskArrayOutput {
+	return o
+}
+
+func (o GetTasksTaskArrayOutput) Index(i pulumi.IntInput) GetTasksTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTasksTask {
+		return vs[0].([]GetTasksTask)[vs[1].(int)]
+	}).(GetTasksTaskOutput)
+}
+
+type GetTasksTaskLabel struct {
+	// The label ID.
+	Id string `pulumi:"id"`
+	// The label name.
+	Name string `pulumi:"name"`
+	// The organization ID.
+	OrgId string `pulumi:"orgId"`
+	// The key-value pairs associated with this label.
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// GetTasksTaskLabelInput is an input type that accepts GetTasksTaskLabelArgs and GetTasksTaskLabelOutput values.
+// You can construct a concrete instance of `GetTasksTaskLabelInput` via:
+//
+//	GetTasksTaskLabelArgs{...}
+type GetTasksTaskLabelInput interface {
+	pulumi.Input
+
+	ToGetTasksTaskLabelOutput() GetTasksTaskLabelOutput
+	ToGetTasksTaskLabelOutputWithContext(context.Context) GetTasksTaskLabelOutput
+}
+
+type GetTasksTaskLabelArgs struct {
+	// The label ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The label name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The organization ID.
+	OrgId pulumi.StringInput `pulumi:"orgId"`
+	// The key-value pairs associated with this label.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (GetTasksTaskLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTasksTaskLabel)(nil)).Elem()
+}
+
+func (i GetTasksTaskLabelArgs) ToGetTasksTaskLabelOutput() GetTasksTaskLabelOutput {
+	return i.ToGetTasksTaskLabelOutputWithContext(context.Background())
+}
+
+func (i GetTasksTaskLabelArgs) ToGetTasksTaskLabelOutputWithContext(ctx context.Context) GetTasksTaskLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTasksTaskLabelOutput)
+}
+
+// GetTasksTaskLabelArrayInput is an input type that accepts GetTasksTaskLabelArray and GetTasksTaskLabelArrayOutput values.
+// You can construct a concrete instance of `GetTasksTaskLabelArrayInput` via:
+//
+//	GetTasksTaskLabelArray{ GetTasksTaskLabelArgs{...} }
+type GetTasksTaskLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetTasksTaskLabelArrayOutput() GetTasksTaskLabelArrayOutput
+	ToGetTasksTaskLabelArrayOutputWithContext(context.Context) GetTasksTaskLabelArrayOutput
+}
+
+type GetTasksTaskLabelArray []GetTasksTaskLabelInput
+
+func (GetTasksTaskLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTasksTaskLabel)(nil)).Elem()
+}
+
+func (i GetTasksTaskLabelArray) ToGetTasksTaskLabelArrayOutput() GetTasksTaskLabelArrayOutput {
+	return i.ToGetTasksTaskLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetTasksTaskLabelArray) ToGetTasksTaskLabelArrayOutputWithContext(ctx context.Context) GetTasksTaskLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTasksTaskLabelArrayOutput)
+}
+
+type GetTasksTaskLabelOutput struct{ *pulumi.OutputState }
+
+func (GetTasksTaskLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTasksTaskLabel)(nil)).Elem()
+}
+
+func (o GetTasksTaskLabelOutput) ToGetTasksTaskLabelOutput() GetTasksTaskLabelOutput {
+	return o
+}
+
+func (o GetTasksTaskLabelOutput) ToGetTasksTaskLabelOutputWithContext(ctx context.Context) GetTasksTaskLabelOutput {
+	return o
+}
+
+// The label ID.
+func (o GetTasksTaskLabelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTaskLabel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The label name.
+func (o GetTasksTaskLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTaskLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The organization ID.
+func (o GetTasksTaskLabelOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTaskLabel) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// The key-value pairs associated with this label.
+func (o GetTasksTaskLabelOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTasksTaskLabel) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type GetTasksTaskLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTasksTaskLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTasksTaskLabel)(nil)).Elem()
+}
+
+func (o GetTasksTaskLabelArrayOutput) ToGetTasksTaskLabelArrayOutput() GetTasksTaskLabelArrayOutput {
+	return o
+}
+
+func (o GetTasksTaskLabelArrayOutput) ToGetTasksTaskLabelArrayOutputWithContext(ctx context.Context) GetTasksTaskLabelArrayOutput {
+	return o
+}
+
+func (o GetTasksTaskLabelArrayOutput) Index(i pulumi.IntInput) GetTasksTaskLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTasksTaskLabel {
+		return vs[0].([]GetTasksTaskLabel)[vs[1].(int)]
+	}).(GetTasksTaskLabelOutput)
+}
+
+type GetTasksTaskLinks struct {
+	// URI of resource.
+	Labels string `pulumi:"labels"`
+	// URI of resource.
+	Logs string `pulumi:"logs"`
+	// URI of resource.
+	Members string `pulumi:"members"`
+	// URI of resource.
+	Owners string `pulumi:"owners"`
+	// URI of resource.
+	Runs string `pulumi:"runs"`
+	// URI of resource.
+	Self string `pulumi:"self"`
+}
+
+// GetTasksTaskLinksInput is an input type that accepts GetTasksTaskLinksArgs and GetTasksTaskLinksOutput values.
+// You can construct a concrete instance of `GetTasksTaskLinksInput` via:
+//
+//	GetTasksTaskLinksArgs{...}
+type GetTasksTaskLinksInput interface {
+	pulumi.Input
+
+	ToGetTasksTaskLinksOutput() GetTasksTaskLinksOutput
+	ToGetTasksTaskLinksOutputWithContext(context.Context) GetTasksTaskLinksOutput
+}
+
+type GetTasksTaskLinksArgs struct {
+	// URI of resource.
+	Labels pulumi.StringInput `pulumi:"labels"`
+	// URI of resource.
+	Logs pulumi.StringInput `pulumi:"logs"`
+	// URI of resource.
+	Members pulumi.StringInput `pulumi:"members"`
+	// URI of resource.
+	Owners pulumi.StringInput `pulumi:"owners"`
+	// URI of resource.
+	Runs pulumi.StringInput `pulumi:"runs"`
+	// URI of resource.
+	Self pulumi.StringInput `pulumi:"self"`
+}
+
+func (GetTasksTaskLinksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTasksTaskLinks)(nil)).Elem()
+}
+
+func (i GetTasksTaskLinksArgs) ToGetTasksTaskLinksOutput() GetTasksTaskLinksOutput {
+	return i.ToGetTasksTaskLinksOutputWithContext(context.Background())
+}
+
+func (i GetTasksTaskLinksArgs) ToGetTasksTaskLinksOutputWithContext(ctx context.Context) GetTasksTaskLinksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTasksTaskLinksOutput)
+}
+
+type GetTasksTaskLinksOutput struct{ *pulumi.OutputState }
+
+func (GetTasksTaskLinksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTasksTaskLinks)(nil)).Elem()
+}
+
+func (o GetTasksTaskLinksOutput) ToGetTasksTaskLinksOutput() GetTasksTaskLinksOutput {
+	return o
+}
+
+func (o GetTasksTaskLinksOutput) ToGetTasksTaskLinksOutputWithContext(ctx context.Context) GetTasksTaskLinksOutput {
+	return o
+}
+
+// URI of resource.
+func (o GetTasksTaskLinksOutput) Labels() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTaskLinks) string { return v.Labels }).(pulumi.StringOutput)
+}
+
+// URI of resource.
+func (o GetTasksTaskLinksOutput) Logs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTaskLinks) string { return v.Logs }).(pulumi.StringOutput)
+}
+
+// URI of resource.
+func (o GetTasksTaskLinksOutput) Members() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTaskLinks) string { return v.Members }).(pulumi.StringOutput)
+}
+
+// URI of resource.
+func (o GetTasksTaskLinksOutput) Owners() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTaskLinks) string { return v.Owners }).(pulumi.StringOutput)
+}
+
+// URI of resource.
+func (o GetTasksTaskLinksOutput) Runs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTaskLinks) string { return v.Runs }).(pulumi.StringOutput)
+}
+
+// URI of resource.
+func (o GetTasksTaskLinksOutput) Self() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTasksTaskLinks) string { return v.Self }).(pulumi.StringOutput)
+}
+
+type GetUsersUser struct {
+	// The user ID.
+	Id string `pulumi:"id"`
+	// The user name.
+	Name string `pulumi:"name"`
+	// The organization ID that the user belongs to. Null if the user is not a member of any organization.
+	OrgId string `pulumi:"orgId"`
+	// The role of the user in the organization (`member` or `owner`). Null if the user is not a member of any organization.
+	OrgRole string `pulumi:"orgRole"`
+	// The password of the user. This will be always `null`.
+	Password string `pulumi:"password"`
+	// The status of a user.
+	Status string `pulumi:"status"`
+}
+
+// GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
+// You can construct a concrete instance of `GetUsersUserInput` via:
+//
+//	GetUsersUserArgs{...}
+type GetUsersUserInput interface {
+	pulumi.Input
+
+	ToGetUsersUserOutput() GetUsersUserOutput
+	ToGetUsersUserOutputWithContext(context.Context) GetUsersUserOutput
+}
+
+type GetUsersUserArgs struct {
+	// The user ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The user name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The organization ID that the user belongs to. Null if the user is not a member of any organization.
+	OrgId pulumi.StringInput `pulumi:"orgId"`
+	// The role of the user in the organization (`member` or `owner`). Null if the user is not a member of any organization.
+	OrgRole pulumi.StringInput `pulumi:"orgRole"`
+	// The password of the user. This will be always `null`.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The status of a user.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutput() GetUsersUserOutput {
+	return i.ToGetUsersUserOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
+}
+
+// GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserArrayInput` via:
+//
+//	GetUsersUserArray{ GetUsersUserArgs{...} }
+type GetUsersUserArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersUserArrayOutput() GetUsersUserArrayOutput
+	ToGetUsersUserArrayOutputWithContext(context.Context) GetUsersUserArrayOutput
+}
+
+type GetUsersUserArray []GetUsersUserInput
+
+func (GetUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return i.ToGetUsersUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
+}
+
+type GetUsersUserOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
+	return o
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return o
+}
+
+// The user ID.
+func (o GetUsersUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The user name.
+func (o GetUsersUserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The organization ID that the user belongs to. Null if the user is not a member of any organization.
+func (o GetUsersUserOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// The role of the user in the organization (`member` or `owner`). Null if the user is not a member of any organization.
+func (o GetUsersUserOutput) OrgRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.OrgRole }).(pulumi.StringOutput)
+}
+
+// The password of the user. This will be always `null`.
+func (o GetUsersUserOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The status of a user.
+func (o GetUsersUserOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetUsersUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
+		return vs[0].([]GetUsersUser)[vs[1].(int)]
+	}).(GetUsersUserOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPermissionInput)(nil)).Elem(), AuthorizationPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPermissionArrayInput)(nil)).Elem(), AuthorizationPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPermissionResourceInput)(nil)).Elem(), AuthorizationPermissionResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskLabelInput)(nil)).Elem(), TaskLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskLabelArrayInput)(nil)).Elem(), TaskLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskLinksInput)(nil)).Elem(), TaskLinksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskLinksPtrInput)(nil)).Elem(), TaskLinksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorizationPermissionInput)(nil)).Elem(), GetAuthorizationPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorizationPermissionArrayInput)(nil)).Elem(), GetAuthorizationPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorizationPermissionResourceInput)(nil)).Elem(), GetAuthorizationPermissionResourceArgs{})
@@ -1084,11 +2411,27 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAuthorizationsAuthorizationPermissionResourceInput)(nil)).Elem(), GetAuthorizationsAuthorizationPermissionResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketInput)(nil)).Elem(), GetBucketsBucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketsBucketArrayInput)(nil)).Elem(), GetBucketsBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLabelsLabelInput)(nil)).Elem(), GetLabelsLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLabelsLabelArrayInput)(nil)).Elem(), GetLabelsLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationsOrganizationInput)(nil)).Elem(), GetOrganizationsOrganizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationsOrganizationArrayInput)(nil)).Elem(), GetOrganizationsOrganizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTaskLabelInput)(nil)).Elem(), GetTaskLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTaskLabelArrayInput)(nil)).Elem(), GetTaskLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTaskLinksInput)(nil)).Elem(), GetTaskLinksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTasksTaskInput)(nil)).Elem(), GetTasksTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTasksTaskArrayInput)(nil)).Elem(), GetTasksTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTasksTaskLabelInput)(nil)).Elem(), GetTasksTaskLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTasksTaskLabelArrayInput)(nil)).Elem(), GetTasksTaskLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTasksTaskLinksInput)(nil)).Elem(), GetTasksTaskLinksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterOutputType(AuthorizationPermissionOutput{})
 	pulumi.RegisterOutputType(AuthorizationPermissionArrayOutput{})
 	pulumi.RegisterOutputType(AuthorizationPermissionResourceOutput{})
+	pulumi.RegisterOutputType(TaskLabelOutput{})
+	pulumi.RegisterOutputType(TaskLabelArrayOutput{})
+	pulumi.RegisterOutputType(TaskLinksOutput{})
+	pulumi.RegisterOutputType(TaskLinksPtrOutput{})
 	pulumi.RegisterOutputType(GetAuthorizationPermissionOutput{})
 	pulumi.RegisterOutputType(GetAuthorizationPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetAuthorizationPermissionResourceOutput{})
@@ -1099,6 +2442,18 @@ func init() {
 	pulumi.RegisterOutputType(GetAuthorizationsAuthorizationPermissionResourceOutput{})
 	pulumi.RegisterOutputType(GetBucketsBucketOutput{})
 	pulumi.RegisterOutputType(GetBucketsBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetLabelsLabelOutput{})
+	pulumi.RegisterOutputType(GetLabelsLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationsOrganizationOutput{})
 	pulumi.RegisterOutputType(GetOrganizationsOrganizationArrayOutput{})
+	pulumi.RegisterOutputType(GetTaskLabelOutput{})
+	pulumi.RegisterOutputType(GetTaskLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetTaskLinksOutput{})
+	pulumi.RegisterOutputType(GetTasksTaskOutput{})
+	pulumi.RegisterOutputType(GetTasksTaskArrayOutput{})
+	pulumi.RegisterOutputType(GetTasksTaskLabelOutput{})
+	pulumi.RegisterOutputType(GetTasksTaskLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetTasksTaskLinksOutput{})
+	pulumi.RegisterOutputType(GetUsersUserOutput{})
+	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }
